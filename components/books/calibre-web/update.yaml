@@ -1,0 +1,65 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: calibre-web
+spec:
+  image: "ghcr.io/linuxserver/calibre-web"
+  interval: 1h
+  provider: generic
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: calibre-web
+spec:
+  imageRepositoryRef:
+    name: calibre-web
+  filterTags:
+    # How does lsio docker images tags work: https://www.linuxserver.io/blog/docker-tags-so-many-tags-so-little-time#2-build-tag-static
+    pattern: '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)-ls(?P<build>\d+)$'
+    extract: "$build"
+  policy:
+    numerical:
+      order: asc
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: calibre-web
+spec:
+  interval: 30m
+  sourceRef:
+    kind: GitRepository
+    name: calibre-web
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      messageTemplate: |
+        Automated image update
+
+        Automation name: {{ .AutomationObject }}
+
+        Files:
+        {{ range $filename, $_ := .Changed.FileChanges -}}
+        - {{ $filename }}
+        {{ end -}}
+
+        Objects:
+        {{ range $resource, $changes := .Changed.Objects -}}
+        - {{ $resource.Kind }} {{ $resource.Name }}
+          Changes:
+        {{- range $_, $change := $changes }}
+            - {{ $change.OldValue }} -> {{ $change.NewValue }}
+        {{ end -}}
+        {{ end -}}
+      author:
+        email: fluxcdbot@cleroux.dev
+        name: fluxcdbot
+    push:
+      branch: main
+  update:
+    path: "./kustomize"
+    strategy: Setters

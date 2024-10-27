@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: actual-server
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: actual-server
+  namespace: actual-server
+spec:
+  interval: 1m0s
+  url: https://github.com/cleroux-dev-homelab/actual-server.git
+  ref:
+    branch: main
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: actual-server
+  namespace: actual-server
+spec:
+  targetNamespace: actual-server
+  interval: 1m0s
+  retryInterval: 30s
+  timeout: 30s
+  path: ./kustomize
+  wait: true
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: actual-server
