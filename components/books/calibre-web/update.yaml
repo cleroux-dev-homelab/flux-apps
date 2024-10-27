@@ -38,7 +38,7 @@ spec:
         branch: main
     commit:
       author:
-        email: fluxcdbot@cleroux.dev
+        email: fluxcdbot@noreply.cleroux.dev
         name: fluxcdbot
       messageTemplate: |
         Automated image update
