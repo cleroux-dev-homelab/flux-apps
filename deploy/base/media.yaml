@@ -1,0 +1,83 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: media
+  namespace: apps-system
+spec:
+  serviceAccountName: flux-apps
+  interval: 1m
+  retryInterval: 30s
+  timeout: 30s
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-apps
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: flux-runtime-info
+  path: components/media/envs/${ENVIRONMENT}
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: media-updates
+  namespace: apps-system
+spec:
+  serviceAccountName: flux-apps
+  interval: 1m
+  retryInterval: 30s
+  timeout: 30s
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-apps
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: flux-runtime-info
+  path: components/media/updates/envs/${ENVIRONMENT}
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: media
+  namespace: apps-system
+spec:
+  interval: 30m
+  sourceRef:
+    kind: GitRepository
+    name: flux-apps
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      messageTemplate: |
+        ${ENVIRONMENT}: Automated image update
+
+        Automation name: {{ .AutomationObject }}
+
+        Files:
+        {{ range $filename, $_ := .Changed.FileChanges -}}
+        - {{ $filename }}
+        {{ end -}}
+
+        Objects:
+        {{ range $resource, $changes := .Changed.Objects -}}
+        - {{ $resource.Kind }} {{ $resource.Name }}
+          Changes:
+        {{- range $_, $change := $changes }}
+            - {{ $change.OldValue }} -> {{ $change.NewValue }}
+        {{ end -}}
+        {{ end -}}
+      author:
+        email: fluxcdbot@noreply.cleroux.dev
+        name: fluxcdbot
+    push:
+      branch: main
+  update:
+    path: "./components/media/envs/${ENVIRONMENT}"
+    strategy: Setters

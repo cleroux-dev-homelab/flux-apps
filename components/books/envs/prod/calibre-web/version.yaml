@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calibre-web
+spec:
+  template:
+    spec:
+      containers:
+        - name: calibre-web
+          image: calibre-web # {"$imagepolicy": "apps-system:calibre-web"}

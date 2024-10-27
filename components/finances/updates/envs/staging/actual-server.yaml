@@ -1,0 +1,20 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: actual-server
+spec:
+  image: ghcr.io/actualbudget/actual-server
+  interval: 1h
+  provider: generic
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: actual-server
+spec:
+  imageRepositoryRef:
+    name: actual-server
+  policy:
+    semver:
+      range: ">=24.10.0"

@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actual-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: actual-server
+  template:
+    metadata:
+      labels:
+        app: actual-server
+    spec:
+      containers:
+        - name: actual-server
+          image: actual-server
+          ports:
+            - name: https
+              containerPort: 5006
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: actual-server

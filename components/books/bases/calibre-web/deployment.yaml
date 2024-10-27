@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calibre-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calibre-web
+  template:
+    metadata:
+      labels:
+        app: calibre-web
+    spec:
+      containers:
+        - name: calibre-web
+          image: calibre-web
+          envFrom:
+            - configMapRef:
+                name: calibre-web-config
+          ports:
+            - name: web
+              containerPort: 8083
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: books
+              mountPath: /books
+
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: calibre-config
+        - name: books
+          persistentVolumeClaim:
+            claimName: calibre-books

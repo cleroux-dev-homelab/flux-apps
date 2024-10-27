@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homer-dashboard
+spec:
+  template:
+    spec:
+      containers:
+        - name: homer-dashboard
+          image: b4bz/homer:v24.12.1 # {"$imagepolicy": "apps-system:homer-dashboard"}

@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actual-server
+spec:
+  template:
+    spec:
+      containers:
+        - name: actual-server
+          image: actual-server # {"$imagepolicy": "apps-system:actual-server"}
