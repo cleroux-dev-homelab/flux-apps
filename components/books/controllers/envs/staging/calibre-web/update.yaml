@@ -31,7 +31,7 @@ spec:
   interval: 30m
   sourceRef:
     kind: GitRepository
-    name: calibre-web
+    name: books-controllers
   git:
     checkout:
       ref:
@@ -62,5 +62,5 @@ spec:
     push:
       branch: main
   update:
-    path: "./kustomize"
+    path: ./components
     strategy: Setters

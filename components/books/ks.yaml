@@ -1,0 +1,20 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: books-controllers
+  namespace: flux-system
+spec:
+  interval: 1m
+  retryInterval: 30s
+  timeout: 30s
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-apps
+  path: components/books/controllers/envs/${ENVIRONMENT}
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: flux-runtime-info
