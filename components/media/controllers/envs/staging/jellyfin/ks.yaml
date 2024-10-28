@@ -15,5 +15,5 @@ spec:
     name: media-controllers
   images:
     - name: jellyfin
-      newName: ghcr.io/linuxserver/jellyfin # {"$imagepolicy": "jellyfin:jellyfin:name"}
-      newTag: 0.6.23-ls296 # {"$imagepolicy": "jellyfin:jellyfin:tag"}
+      newName: ghcr.io/jellyfin/jellyfin # {"$imagepolicy": "jellyfin:jellyfin:name"}
+      newTag: 10.10.0 # {"$imagepolicy": "jellyfin:jellyfin:tag"}
