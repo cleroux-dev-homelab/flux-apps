@@ -1,0 +1,19 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: actual-server
+spec:
+  targetNamespace: actual-server
+  interval: 1m0s
+  retryInterval: 30s
+  timeout: 30s
+  path: components/finances/controllers/bases/actual-server
+  wait: true
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: finances-controllers
+  images:
+    - name: actual-server
+      newName: ghcr.io/linuxserver/actual-server # {"$imagepolicy": "actual-server:actual-server:name"}
+      newTag: 0.6.23-ls296 # {"$imagepolicy": "actual-server:actual-server:tag"}
