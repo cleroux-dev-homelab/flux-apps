@@ -1,3 +1,30 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: books-controllers
+stringData:
+  password: ENC[AES256_GCM,data:muGPcWHkGYWokaXJtL2L9H8RbNHPWxKrNBH77F5TDTw/pJH7eaXHxR3syEJh3XJm116vJX2EBcIgIvA4qfRtp45/sDxjfziLBOUA0WidTO/Aaedx6bCKc2RodR/S,iv:MwpZ9VSmMrhx6N5IBTJ2BcWBD1/dXIzzkcXas3WtgCg=,tag:crcA2VSIKaR30K0nzsyPzw==,type:str]
+  username: ENC[AES256_GCM,data:LrunlsQQywaqOmXdqhxApG7Jecl3,iv:3CuOtm4IoKYD4bJfgeuTLQpUjGmRGWvNZ0eU49Mz0uE=,tag:qPIdIw94IC5G47F2yeS2KQ==,type:str]
+sops:
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpbnAvZE02bEd1eDNOSFRn
+        TmdsRFBZRUpzenFwR0QyYm9nT01ldFR2WDM0CjBMM0QvK1J0bGxMYnVQWVVhR3FD
+        RzlqUXRyaE56M0pEVDlxeWR0eTBKMzgKLS0tIENGYUEzV09CUGZUNC9QUDQyYVFn
+        V2lWaUtjbExOMmRCSmVBMmhJNXRUdXMK1BpxnWtHNyshbPnU0h4oL7/t/jQI21QT
+        54FB5Ba+uK9h/TfgvZaBchE+x1xDuz7HqwrQYSo/uBQl7VAqVqyE2A==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2024-10-28T15:47:22Z"
+  mac: ENC[AES256_GCM,data:44SDAxCm+mmq97oVaxlilggbODghmj6+zG74croRQ7/lpXEglPP+FEogyDy4qUA4wT3VXnYiThcAzIM+9vDTlHX/DUlSvvoLzMfD1rtqJpCRHv/jnxJGw4gQZhk0unaQDVQH7ohcD2Gz3m3XL6ytjmUdm+NcwbsfUB6ByuUyFbM=,iv:opOxYkg3TMLGxR5qmupTlqtaR3L1HSB2dKwwVCJ6zWU=,tag:hg98HKxcfkM9LTlOmNI6yA==,type:str]
+  pgp: []
+  encrypted_regex: ^(data|stringData)$
+  version: 3.9.1
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
@@ -6,6 +33,8 @@ metadata:
 spec:
   interval: 1m0s
   url: https://github.com/cleroux-dev-homelab/flux-apps.git
+  secretRef:
+    name: books-controllers
   ref:
     branch: main
   ignore: |
@@ -14,3 +43,23 @@ spec:
 
     # Include the books controllers
     !/components/books/controllers
+sops:
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpbnAvZE02bEd1eDNOSFRn
+        TmdsRFBZRUpzenFwR0QyYm9nT01ldFR2WDM0CjBMM0QvK1J0bGxMYnVQWVVhR3FD
+        RzlqUXRyaE56M0pEVDlxeWR0eTBKMzgKLS0tIENGYUEzV09CUGZUNC9QUDQyYVFn
+        V2lWaUtjbExOMmRCSmVBMmhJNXRUdXMK1BpxnWtHNyshbPnU0h4oL7/t/jQI21QT
+        54FB5Ba+uK9h/TfgvZaBchE+x1xDuz7HqwrQYSo/uBQl7VAqVqyE2A==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2024-10-28T15:47:22Z"
+  mac: ENC[AES256_GCM,data:44SDAxCm+mmq97oVaxlilggbODghmj6+zG74croRQ7/lpXEglPP+FEogyDy4qUA4wT3VXnYiThcAzIM+9vDTlHX/DUlSvvoLzMfD1rtqJpCRHv/jnxJGw4gQZhk0unaQDVQH7ohcD2Gz3m3XL6ytjmUdm+NcwbsfUB6ByuUyFbM=,iv:opOxYkg3TMLGxR5qmupTlqtaR3L1HSB2dKwwVCJ6zWU=,tag:hg98HKxcfkM9LTlOmNI6yA==,type:str]
+  pgp: []
+  encrypted_regex: ^(data|stringData)$
+  version: 3.9.1
