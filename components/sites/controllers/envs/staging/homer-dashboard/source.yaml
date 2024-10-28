@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: sites-controllers
+stringData:
+    password: ENC[AES256_GCM,data:72MfjVokI4ZZyPcqt2xSO6EdN+LHUjmSnLcLK8kYOpCXp+1rTwcaBGw5hqSOL8S4WIkBmGR/VhDM4DQNoIcMbcdLnmIaYw14uoFUoD5xvjPlMhr+Q2VHCiBxkBip,iv:MwpZ9VSmMrhx6N5IBTJ2BcWBD1/dXIzzkcXas3WtgCg=,tag:KLM8iVx8F3jaHil+mIjWJw==,type:str]
+    username: ENC[AES256_GCM,data:kd0ctP9g8MJmoBxwASmQ2Tv0zI+f,iv:3CuOtm4IoKYD4bJfgeuTLQpUjGmRGWvNZ0eU49Mz0uE=,tag:yur/RXWPOEgUygwOdXgXyQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMYk5xN2UvOEN1MHV1MUFs
+            ZW9xSnJDWE9Dem5Ua0dXMlNsQXE0bXp2eVNJCjJCdWduYWhtSXdHOGE4RWkyTTda
+            WUhORitJL0dhTGFhSlhMNStseHB6dWcKLS0tIHM2Y29kQXZCUUZwQTQwVEtwNm1G
+            Y2IvOHVJdHovZlAwVVVraFkvZ1cxODAKlQPMnsXpL8pqbLBkmlSn9bE+UBikgrXS
+            GF3f33PfnkUQ0urk5OETwjhDV+gRRRDVmxYq3hrYitj4UJWA7+xhQA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-28T16:34:13Z"
+    mac: ENC[AES256_GCM,data:s4BFjjYq4w41mGfKayK+E36/BTFcRrtjuz6aL5Ojwhafareq/q/G+k/EDSJxsZKqAvM5X2ZSm4U+K33fPgXzsWigglMq+T62LEMcXRaHTowLFCHOLD9eivlMgufN9Cvz0SFVDJs29A5sjOZD24zcWd039wwbGco28kd9wHZBpIs=,iv:0dMUrUDiWP7Oj4niGE9ws965KiV5XXQwZaBPHz4s6t4=,tag:DHH4VwJNc8CQpO83C2ZLIQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+    name: sites-controllers
+spec:
+    interval: 1m0s
+    url: https://github.com/cleroux-dev-homelab/flux-apps.git
+    secretRef:
+        name: sites-controllers
+    ref:
+        branch: main
+    ignore: |
+        # exclude all
+        /*
+
+        # Include the sites controllers
+        !/components/sites/controllers
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMYk5xN2UvOEN1MHV1MUFs
+            ZW9xSnJDWE9Dem5Ua0dXMlNsQXE0bXp2eVNJCjJCdWduYWhtSXdHOGE4RWkyTTda
+            WUhORitJL0dhTGFhSlhMNStseHB6dWcKLS0tIHM2Y29kQXZCUUZwQTQwVEtwNm1G
+            Y2IvOHVJdHovZlAwVVVraFkvZ1cxODAKlQPMnsXpL8pqbLBkmlSn9bE+UBikgrXS
+            GF3f33PfnkUQ0urk5OETwjhDV+gRRRDVmxYq3hrYitj4UJWA7+xhQA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-28T16:34:13Z"
+    mac: ENC[AES256_GCM,data:s4BFjjYq4w41mGfKayK+E36/BTFcRrtjuz6aL5Ojwhafareq/q/G+k/EDSJxsZKqAvM5X2ZSm4U+K33fPgXzsWigglMq+T62LEMcXRaHTowLFCHOLD9eivlMgufN9Cvz0SFVDJs29A5sjOZD24zcWd039wwbGco28kd9wHZBpIs=,iv:0dMUrUDiWP7Oj4niGE9ws965KiV5XXQwZaBPHz4s6t4=,tag:DHH4VwJNc8CQpO83C2ZLIQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1
