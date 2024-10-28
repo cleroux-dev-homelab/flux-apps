@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: recipes-controllers
+stringData:
+    password: ENC[AES256_GCM,data:p8JwOMOozT6a/v808T9MaS3GUF271FAzmF0RZX22BcHh0Ol4OiMkyUGisweK3wxPDv4W88pYcr05gG8hakeS/GOdBMfAlEmVuv6QFbVmJpAiO4/tLp4gHrv4l1z2,iv:MwpZ9VSmMrhx6N5IBTJ2BcWBD1/dXIzzkcXas3WtgCg=,tag:NrdOs+bNTiwuSEpmwJwRig==,type:str]
+    username: ENC[AES256_GCM,data:sqZvl+5yKzFgO6NC/SysRpDekr+3,iv:3CuOtm4IoKYD4bJfgeuTLQpUjGmRGWvNZ0eU49Mz0uE=,tag:g2Zq1lCgg/CufLJa2jsQTw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAyVm45MVdrbFd2WFN6ZnA2
+            ay9WWkFmZnB0WFFsV2lMUDlzd09IM2pqR25zCnVTMUdUaVBFcHh0ZkZHTktMNVBm
+            anNCRXdXQ3VYMWFXWHJUYnFObUh5TXMKLS0tIFl5eHltVVd2ZDZLUzJSbjQyMEl4
+            Qi84TFRwMEkrRzB6MHFNRk5vUkU3NkkKL0FEYPJqokatSVOMjrGcOOEv2RVLNcUJ
+            +StHbukpC6TLzj9b3LNja3rzOfdj1u8cQ3VRQbRoDgMbP6uUGzHUUQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-28T16:55:24Z"
+    mac: ENC[AES256_GCM,data:+p3twrHqF8/EILckkCyo7ZLgwswdTHOm2qbzOYS1jGEkVQsP69v/u19wNJZm4hI4WfyiWD8vml5yUVAKlpLswfNpwkMUy3QAnaloACEpoK4lCFb9b+Ivg1+dRBHFJv1n0O5lnVpzklLJOBNAMU4dL8j88pu2nwijtF+/Lwx96o8=,iv:vk4X+0jjtg0bSBMFsohAUpP/fAyz9j43DrUoBAhXqgk=,tag:2Tv/EnwUPVCgXl4wah+bCg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+    name: recipes-controllers
+spec:
+    interval: 1m0s
+    url: https://github.com/cleroux-dev-homelab/flux-apps.git
+    secretRef:
+        name: recipes-controllers
+    ref:
+        branch: main
+    ignore: |
+        # exclude all
+        /*
+
+        # Include the recipes controllers
+        !/components/recipes/controllers
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAyVm45MVdrbFd2WFN6ZnA2
+            ay9WWkFmZnB0WFFsV2lMUDlzd09IM2pqR25zCnVTMUdUaVBFcHh0ZkZHTktMNVBm
+            anNCRXdXQ3VYMWFXWHJUYnFObUh5TXMKLS0tIFl5eHltVVd2ZDZLUzJSbjQyMEl4
+            Qi84TFRwMEkrRzB6MHFNRk5vUkU3NkkKL0FEYPJqokatSVOMjrGcOOEv2RVLNcUJ
+            +StHbukpC6TLzj9b3LNja3rzOfdj1u8cQ3VRQbRoDgMbP6uUGzHUUQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-28T16:55:24Z"
+    mac: ENC[AES256_GCM,data:+p3twrHqF8/EILckkCyo7ZLgwswdTHOm2qbzOYS1jGEkVQsP69v/u19wNJZm4hI4WfyiWD8vml5yUVAKlpLswfNpwkMUy3QAnaloACEpoK4lCFb9b+Ivg1+dRBHFJv1n0O5lnVpzklLJOBNAMU4dL8j88pu2nwijtF+/Lwx96o8=,iv:vk4X+0jjtg0bSBMFsohAUpP/fAyz9j43DrUoBAhXqgk=,tag:2Tv/EnwUPVCgXl4wah+bCg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1
