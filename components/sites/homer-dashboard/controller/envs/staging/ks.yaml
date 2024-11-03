@@ -4,6 +4,7 @@ kind: Kustomization
 metadata:
   name: homer-dashboard
 spec:
+  targetNamespace: homer-dashboard
   interval: 1m0s
   retryInterval: 30s
   timeout: 30s

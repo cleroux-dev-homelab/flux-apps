@@ -4,6 +4,7 @@ kind: Kustomization
 metadata:
   name: actual-server
 spec:
+  targetNamespace: actual-server
   interval: 1m0s
   retryInterval: 30s
   timeout: 30s

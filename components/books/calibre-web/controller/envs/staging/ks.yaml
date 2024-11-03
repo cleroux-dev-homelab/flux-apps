@@ -4,6 +4,7 @@ kind: Kustomization
 metadata:
   name: calibre-web
 spec:
+  targetNamespace: calibre-web
   interval: 1m
   retryInterval: 30s
   timeout: 30s

@@ -3,6 +3,7 @@ kind: Kustomization
 metadata:
   name: mealie
 spec:
+  targetNamespace: mealie
   interval: 1m0s
   retryInterval: 30s
   timeout: 30s
