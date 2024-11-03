@@ -8,7 +8,7 @@ spec:
   interval: 1m0s
   retryInterval: 30s
   timeout: 30s
-  path: components/sites/homer-dashboard/envs/${ENVIRONMENT}
+  path: components/sites/homer-dashboard/controller/envs/${ENVIRONMENT}
   wait: true
   prune: true
   sourceRef:

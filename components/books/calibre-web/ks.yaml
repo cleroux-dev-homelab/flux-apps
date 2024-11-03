@@ -18,7 +18,7 @@ spec:
   wait: true
   sourceRef:
     kind: GitRepository
-    name: calibre-web
+    name: flux-apps
   path: components/books/calibre-web/controller/envs/${ENVIRONMENT}
   decryption:
     provider: sops
