@@ -1,12 +1,62 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: jellyfin
+stringData:
+    username: ENC[AES256_GCM,data:nR06yYq+ddPEkqqop2m7Mcv4H2iH,iv:aCR12iCmaxEHJ9hcVawSF8MGRZCObERY1R9HX3anVFs=,tag:ZYBARYZSlGWTqBfPnFjt4A==,type:str]
+    password: ENC[AES256_GCM,data:dPb4JivlgumyNLmUxtIp6fCc5zSW+dzL4HsHrQzoxx4ENtSjbIA6lE6BrxYOC1LixRVGnjKOqONWHDi3p5AeTkmzGgzAguS8/lUg6qd2sAY0Li626BCZi7/AM6jn,iv:79zkVcQlGHfm5upTVwrC8lrEMqLFlU2OY0WtJhcTbxI=,tag:qfDiq7nUHKJ+hR14IRFU3w==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBENHJhOWJYSk1GckFvSXB6
+            ZnZ5dlRQa3dyelZodWJpV0N4NzdwODZWMUJjCkhMZzhyQ0VkU0xsT210clZQU0FF
+            dGR1ZmpQT1JDNEhIOHdNbVZwdGI1aFEKLS0tIE1XZCtrMlVIVnhJR1M2L3dEd1Rs
+            KzRYeDA4VU9qVW55L2JsWjFCMktQWDQKQMsW8Jl73fsZh3VeI4aaF/roXFLfrYKj
+            GvEumlJz9PZv7Xv6zCDv6AuiRIdUX7HhDLH+xmyQjbFiA/+RMqQiLA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-11-03T22:34:22Z"
+    mac: ENC[AES256_GCM,data:X3KXoYh2wk14AKVFZ/6XJfv6mQneosfFWiikrgIkdzjPjigR6VBSDVoe+V7aEZ9xY3IVaXAyAwIlhOGgKeg5VL46MDUVH5CDI/vZMNkbKuCW7HJTYkDXrtj2sAkP3z2UgKLHQPC8Jza/caITsuGZ1DvPi9vWQZZiNQ7L7qFfnVk=,iv:1giotF/HLvH7yDLOs1LELOi21RKMm7Q8nRH/plN5IQE=,tag:weqQYvCqamRKf9tMRhUxhw==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1
+---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: jellyfin
+    name: jellyfin
 spec:
-  interval: 1m0s
-  url: https://github.com/cleroux-dev-homelab/flux-apps.git
-  ref:
-    branch: main
-  ignore: |
-    /*
-    !/components/media/jellyfin
+    interval: 1m0s
+    url: https://github.com/cleroux-dev-homelab/flux-apps.git
+    ref:
+        branch: main
+    secretRef:
+        - name: jellyfin
+    ignore: |
+        /*
+        !/components/media/jellyfin
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBENHJhOWJYSk1GckFvSXB6
+            ZnZ5dlRQa3dyelZodWJpV0N4NzdwODZWMUJjCkhMZzhyQ0VkU0xsT210clZQU0FF
+            dGR1ZmpQT1JDNEhIOHdNbVZwdGI1aFEKLS0tIE1XZCtrMlVIVnhJR1M2L3dEd1Rs
+            KzRYeDA4VU9qVW55L2JsWjFCMktQWDQKQMsW8Jl73fsZh3VeI4aaF/roXFLfrYKj
+            GvEumlJz9PZv7Xv6zCDv6AuiRIdUX7HhDLH+xmyQjbFiA/+RMqQiLA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-11-03T22:34:22Z"
+    mac: ENC[AES256_GCM,data:X3KXoYh2wk14AKVFZ/6XJfv6mQneosfFWiikrgIkdzjPjigR6VBSDVoe+V7aEZ9xY3IVaXAyAwIlhOGgKeg5VL46MDUVH5CDI/vZMNkbKuCW7HJTYkDXrtj2sAkP3z2UgKLHQPC8Jza/caITsuGZ1DvPi9vWQZZiNQ7L7qFfnVk=,iv:1giotF/HLvH7yDLOs1LELOi21RKMm7Q8nRH/plN5IQE=,tag:weqQYvCqamRKf9tMRhUxhw==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1

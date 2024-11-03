@@ -1,13 +1,62 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: homer-dashboard
+stringData:
+    username: ENC[AES256_GCM,data:CsNgeKY6rGifgowqB/4hQxuCpMlK,iv:00kjLbNbGlzVqPPX2BFBjXjMvyYUOyMKn44iBADE1Sg=,tag:ZzZEEPT4ON4bERAxoJ2cmA==,type:str]
+    password: ENC[AES256_GCM,data:XcoNU7fOi0L+TbW1DUeWxZUe5beRm1Cv+DZLyymLGHFEyG0q2CK2w+YB3mICcVJtpqJMfolsEXKEvLG2J0cTQ/jtWLoP+n6p+7c1Ciw8zP0A+1f49eimHVSZ2pNO,iv:kg3WeDlhevUCR1ymp0azu7KuxOFXUAjj7b5Ksd5++6c=,tag:fBsEsRXa6rXMu0aY8xbIkw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBSZFNmMXRmNlMxRmthY2F3
+            cVZSN0hmbTgzRDNtaGZoK1oyZDhud3pFUEU4CmhKMllYUEFFelh1ZFlCN0VEdklu
+            eDdiTjdUNUI4VmlRUStoZmRHMTVOSHMKLS0tIERLVHFEbTA4SGhva2RMTk8xZEYz
+            RWNXM0VoZmJLTFZGS3NVRVVqYmdkazgKBHUjuMHc64byajNxEoMMI+D6nafoQrIM
+            m76kfujgVOHNE8Pd3X3NNrbn8xOsb9Z1rjVnQa99i3FcaI1PdXwKTA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-11-03T22:34:43Z"
+    mac: ENC[AES256_GCM,data:36uezQs+pjGNPnHh1PkhUTbsUmyb7zuDCp9w4dZnoR2mP9vwsz7EcNuyEyRgBcbhh7j0sDmBFsApj5bAAy3WXRqAwmqOsnZDJrBPOKLcyf3Xq3bG91vOgM8oh1w0Nr5BIvZ5F1/XLsQSb1QFkeT65ATl4fzDhxks3ExoaX6HJ6M=,iv:6IIxGLkj6ldnrSXYtc4NueAD2dxaPLShqYWxeuD/VtI=,tag:kaqCEDBvW+rMOkDGPU0Ung==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: homer-dashboard
+    name: homer-dashboard
 spec:
-  interval: 1m0s
-  url: https://github.com/cleroux-dev-homelab/flux-apps.git
-  ref:
-    branch: main
-  ignore: |
-    /*
-    !/components/sites/homer-dashboard
+    interval: 1m0s
+    url: https://github.com/cleroux-dev-homelab/flux-apps.git
+    ref:
+        branch: main
+    secretRef:
+        - name: homer-dashboard
+    ignore: |
+        /*
+        !/components/sites/homer-dashboard
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBSZFNmMXRmNlMxRmthY2F3
+            cVZSN0hmbTgzRDNtaGZoK1oyZDhud3pFUEU4CmhKMllYUEFFelh1ZFlCN0VEdklu
+            eDdiTjdUNUI4VmlRUStoZmRHMTVOSHMKLS0tIERLVHFEbTA4SGhva2RMTk8xZEYz
+            RWNXM0VoZmJLTFZGS3NVRVVqYmdkazgKBHUjuMHc64byajNxEoMMI+D6nafoQrIM
+            m76kfujgVOHNE8Pd3X3NNrbn8xOsb9Z1rjVnQa99i3FcaI1PdXwKTA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-11-03T22:34:43Z"
+    mac: ENC[AES256_GCM,data:36uezQs+pjGNPnHh1PkhUTbsUmyb7zuDCp9w4dZnoR2mP9vwsz7EcNuyEyRgBcbhh7j0sDmBFsApj5bAAy3WXRqAwmqOsnZDJrBPOKLcyf3Xq3bG91vOgM8oh1w0Nr5BIvZ5F1/XLsQSb1QFkeT65ATl4fzDhxks3ExoaX6HJ6M=,iv:6IIxGLkj6ldnrSXYtc4NueAD2dxaPLShqYWxeuD/VtI=,tag:kaqCEDBvW+rMOkDGPU0Ung==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1

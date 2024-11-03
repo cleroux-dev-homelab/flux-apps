@@ -1,13 +1,62 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: calibre-web
+stringData:
+    username: ENC[AES256_GCM,data:ZkKqPh7Yyg59KG8jr/zn0MVyv4dg,iv:8SbbwtGSI+OneFBhJLUD6CL9R3CKhkmDCJ/cqqvgCyo=,tag:aneau/i/6wJvHGylu+QgkA==,type:str]
+    password: ENC[AES256_GCM,data:C59iredYk8h0K63Hf8ASUC3IPYft5gD4Z04szTz8eRpwx3GvMlgqtZW1YFVmETVEUnzCvzaIsGGF4WljtqIHFjCVq/87LyDdr8e1JiVhhgHAHkX184ST2iS7UWDq,iv:iWee5lNXcXLst9qWhJ8+vFfC5upFSKeH3Nw5m0p+MDU=,tag:2ha0pFzfjvDVywS2APXiZA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBSUlM4R3N5L2VuUUkwSEcr
+            YmdlYXlET0RmVUdJQ2F1VnVUZFhQS0Q3KzIwCllzd1ppWktTRXI1VlR1V3dMUGNV
+            dlZGdGRybldHa3VKMUk5N2lLT2pJTkEKLS0tIEc2LzRuSHpQbG9JVS9naW1XMits
+            Q1RUbXNzL3kwUXpqQ3B3Z0FqNmpYOG8KZmjhW+IjDxDe8cOcabjfZiAMfzJsWP98
+            Ew9bxrFxUtJ1JDzrV5SkhKHIM2F3LetZN3pYY8HrowdQlpUA7dFJvw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-11-03T22:34:01Z"
+    mac: ENC[AES256_GCM,data:60Fzcul1AHgjLSsKsBEBVxr7C3Im+otKJmQeUIqPw1nvoa3LSIL3Ox0Kauojom58OhtfvbZGSfEYqVcle3m30u9SFI+Wx2YiO5g+ygRsDl8gUeFkzzbLW3xbI8XQnxN3YRcPGCoSGgLP7E83ARtIVj5Pb7iNJmuENsz8ke769cE=,iv:iy2zgCkf3RVtQpQPNHvOmOPcu7B+7xgo/8ngoYa7tUY=,tag:/5+IqhJZqU5jeyF2JXzsng==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: calibre-web
+    name: calibre-web
 spec:
-  interval: 1m0s
-  url: https://github.com/cleroux-dev-homelab/flux-apps.git
-  ref:
-    branch: main
-  ignore: |
-    /*
-    !/components/books/calibre-web
+    interval: 1m0s
+    url: https://github.com/cleroux-dev-homelab/flux-apps.git
+    ref:
+        branch: main
+    secretRef:
+        - name: calibre-web
+    ignore: |
+        /*
+        !/components/books/calibre-web
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBSUlM4R3N5L2VuUUkwSEcr
+            YmdlYXlET0RmVUdJQ2F1VnVUZFhQS0Q3KzIwCllzd1ppWktTRXI1VlR1V3dMUGNV
+            dlZGdGRybldHa3VKMUk5N2lLT2pJTkEKLS0tIEc2LzRuSHpQbG9JVS9naW1XMits
+            Q1RUbXNzL3kwUXpqQ3B3Z0FqNmpYOG8KZmjhW+IjDxDe8cOcabjfZiAMfzJsWP98
+            Ew9bxrFxUtJ1JDzrV5SkhKHIM2F3LetZN3pYY8HrowdQlpUA7dFJvw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-11-03T22:34:01Z"
+    mac: ENC[AES256_GCM,data:60Fzcul1AHgjLSsKsBEBVxr7C3Im+otKJmQeUIqPw1nvoa3LSIL3Ox0Kauojom58OhtfvbZGSfEYqVcle3m30u9SFI+Wx2YiO5g+ygRsDl8gUeFkzzbLW3xbI8XQnxN3YRcPGCoSGgLP7E83ARtIVj5Pb7iNJmuENsz8ke769cE=,iv:iy2zgCkf3RVtQpQPNHvOmOPcu7B+7xgo/8ngoYa7tUY=,tag:/5+IqhJZqU5jeyF2JXzsng==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1

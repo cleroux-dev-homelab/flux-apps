@@ -1,12 +1,62 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: actual-server
+stringData:
+    username: ENC[AES256_GCM,data:xq5ODjIpir9+lD3btATmXKnYcygk,iv:hdNokwQXBXWZyuAcpy5D7VEzBnwKzJLXW7n7hlzrkzM=,tag:v6XVnrUmHU01OvS7aL4gHQ==,type:str]
+    password: ENC[AES256_GCM,data:ERaNyvN8G7cZl2Xjk8YhgKQRKo0mGacdsYBm3t7Cu3GCmh4//xfu1FW28Hox9I5UPou7PQeo1o7e9iKYuXb4rU6j1kIPmrTsQqEiKH5UjraD1g7qY/bcWmazqNi9,iv:BVTeR8Cy4gagUKkmB1/c3vDs25jCnkF0g0QIQCULRq4=,tag:w2WncV0XBI1vWvKyuBKaEQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSByOVBjTzNiajA1RWd5b1JL
+            VXVEVCtVM1puckUyRGpGWU1UMVkwVmVPY1ZnCmlzc2p5QzJPZ0h5VVphUys5d2hU
+            QXpVY0hNWjFjMUlFSjRMYnJiay85VVUKLS0tIHFGWGdqenRieElxT0pvYTNnUE9x
+            blkrbHRTUmVIaXVabkkvb3oxSkpjN1kKEnQlcmm2o4MysOmg9aY14Y3sIZ+7weBt
+            o50GPv262caqfTD3/eaJo/u/j/KRZAE6vhlQhxO3v5p+YblIDHc44Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-11-03T22:34:14Z"
+    mac: ENC[AES256_GCM,data:Kl0K/qPXnGhIQ1uzIH+Bw7ca3jsVlJQdxjqtTV1neAdJag5IRwIToDB/MuZRF4wz/t2wqk52sWiWz5mzsFz0WId4yB4dKFOKKCMzWpz8VJm+FCwW6i35iIenZ/bYS7gzNC65dxhK5+nJrZRBAuo2/9rMaDZQ6VMRKyKkXeAoFJ4=,iv:1fZ8kNoN6d3iWEyVrZJSU0m0Ha2qE6Bc8yBpGaSycUA=,tag:SDHgwI2o4PdVSZfbtqIfZA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1
+---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: actual-server
+    name: actual-server
 spec:
-  interval: 1m0s
-  url: https://github.com/cleroux-dev-homelab/flux-apps.git
-  ref:
-    branch: main
-  ignore: |
-    /*
-    !/components/finances/actual-server
+    interval: 1m0s
+    url: https://github.com/cleroux-dev-homelab/flux-apps.git
+    ref:
+        branch: main
+    secretRef:
+        - name: actual-server
+    ignore: |
+        /*
+        !/components/finances/actual-server
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSByOVBjTzNiajA1RWd5b1JL
+            VXVEVCtVM1puckUyRGpGWU1UMVkwVmVPY1ZnCmlzc2p5QzJPZ0h5VVphUys5d2hU
+            QXpVY0hNWjFjMUlFSjRMYnJiay85VVUKLS0tIHFGWGdqenRieElxT0pvYTNnUE9x
+            blkrbHRTUmVIaXVabkkvb3oxSkpjN1kKEnQlcmm2o4MysOmg9aY14Y3sIZ+7weBt
+            o50GPv262caqfTD3/eaJo/u/j/KRZAE6vhlQhxO3v5p+YblIDHc44Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-11-03T22:34:14Z"
+    mac: ENC[AES256_GCM,data:Kl0K/qPXnGhIQ1uzIH+Bw7ca3jsVlJQdxjqtTV1neAdJag5IRwIToDB/MuZRF4wz/t2wqk52sWiWz5mzsFz0WId4yB4dKFOKKCMzWpz8VJm+FCwW6i35iIenZ/bYS7gzNC65dxhK5+nJrZRBAuo2/9rMaDZQ6VMRKyKkXeAoFJ4=,iv:1fZ8kNoN6d3iWEyVrZJSU0m0Ha2qE6Bc8yBpGaSycUA=,tag:SDHgwI2o4PdVSZfbtqIfZA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.1
