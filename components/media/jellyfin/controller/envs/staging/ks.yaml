@@ -16,4 +16,4 @@ spec:
   images:
     - name: jellyfin
       newName: ghcr.io/jellyfin/jellyfin # {"$imagepolicy": "jellyfin-system:jellyfin:name"}
-      newTag: 10.10.0 # {"$imagepolicy": "jellyfin-system:jellyfin:tag"}
+      newTag: 10.10.1 # {"$imagepolicy": "jellyfin-system:jellyfin:tag"}
