@@ -1,0 +1,13 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: calibre-web
+spec:
+  interval: 1m0s
+  url: https://github.com/cleroux-dev-homelab/flux-apps.git
+  ref:
+    branch: main
+  ignore: |
+    /*
+    !/components/books/calibre-web

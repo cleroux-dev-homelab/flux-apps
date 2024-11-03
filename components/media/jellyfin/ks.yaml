@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jellyfin-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: jellyfin-controller
+  namespace: flux-system
+spec:
+  targetNamespace: jellyfin-system
+  interval: 1m0s
+  retryInterval: 30s
+  timeout: 30s
+  path: components/media/jellyfin/controller/envs/${ENVIRONMENT}
+  wait: true
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-apps

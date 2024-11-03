@@ -1,0 +1,16 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: homer-dashboard-controller
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  retryInterval: 30s
+  timeout: 30s
+  path: components/sites/homer-dashboard/envs/${ENVIRONMENT}
+  wait: true
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-apps

@@ -1,0 +1,18 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: mealie
+spec:
+  interval: 1m0s
+  retryInterval: 30s
+  timeout: 30s
+  path: components/recipes/mealie/controller/base
+  wait: true
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: mealie
+  images:
+    - name: mealie
+      newName: ghcr.io/linuxserver/mealie # {"$imagepolicy": "mealie:mealie:name"}
+      newTag: 0.6.23-ls296 # {"$imagepolicy": "mealie:mealie:tag"}

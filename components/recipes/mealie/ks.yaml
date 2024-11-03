@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mealie
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: mealie-controller
+  namespace: flux-system
+spec:
+  targetNamespace: mealie
+  interval: 1m0s
+  retryInterval: 30s
+  timeout: 30s
+  path: components/recipes/mealie/controller/envs/${ENVIRONMENT}
+  wait: true
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-apps

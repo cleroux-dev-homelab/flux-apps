@@ -1,0 +1,19 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: homer-dashboard
+spec:
+  interval: 1m0s
+  retryInterval: 30s
+  timeout: 30s
+  path: components/sites/homer-dashboard/controller/base
+  wait: true
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homer-dashboard
+  images:
+    - name: homer-dashboard
+      newName: b4bz/homer # {"$imagepolicy": "homer-dashboard:homer-dashboard:name"}
+      newTag: v24.10.2 # {"$imagepolicy": "homer-dashboard:homer-dashboard:tag"}

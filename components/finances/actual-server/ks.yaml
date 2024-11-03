@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: actual-server
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: actual-server-controller
+  namespace: flux-system
+spec:
+  targetNamespace: actual-server
+  interval: 1m0s
+  retryInterval: 30s
+  timeout: 30s
+  path: components/finances/actual-server/controller/envs/${ENVIRONMENT}
+  wait: true
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-apps

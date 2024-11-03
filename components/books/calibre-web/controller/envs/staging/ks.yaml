@@ -1,0 +1,23 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: calibre-web
+spec:
+  interval: 1m
+  retryInterval: 30s
+  timeout: 30s
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: calibre-web
+  path: components/books/calibre-web/controller/base
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: flux-runtime-info
+  images:
+    - name: calibre-web
+      newName: ghcr.io/linuxserver/calibre-web # {"$imagepolicy": "calibre-web:calibre-web:name"}
+      newTag: 0.6.23-ls296 # {"$imagepolicy": "calibre-web:calibre-web:tag"}
