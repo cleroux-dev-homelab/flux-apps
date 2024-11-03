@@ -14,10 +14,6 @@ spec:
     kind: GitRepository
     name: calibre-web
   path: components/books/calibre-web/controller/base
-  postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: flux-runtime-info
   images:
     - name: calibre-web
       newName: ghcr.io/linuxserver/calibre-web # {"$imagepolicy": "calibre-web:calibre-web:name"}
