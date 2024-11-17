@@ -1,4 +1,3 @@
----
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
@@ -17,4 +16,4 @@ spec:
   images:
     - name: homer-dashboard
       newName: b4bz/homer # {"$imagepolicy": "homer-dashboard:homer-dashboard:name"}
-      newTag: v24.10.2 # {"$imagepolicy": "homer-dashboard:homer-dashboard:tag"}
+      newTag: v24.11.4 # {"$imagepolicy": "homer-dashboard:homer-dashboard:tag"}
