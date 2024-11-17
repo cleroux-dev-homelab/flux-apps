@@ -16,4 +16,4 @@ spec:
   images:
     - name: mealie
       newName: ghcr.io/mealie-recipes/mealie # {"$imagepolicy": "mealie:mealie:name"}
-      newTag: v2.1.0 # {"$imagepolicy": "mealie:mealie:tag"}
+      newTag: v2.2.0 # {"$imagepolicy": "mealie:mealie:tag"}
