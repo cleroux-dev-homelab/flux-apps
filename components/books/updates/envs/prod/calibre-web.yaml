@@ -1,0 +1,24 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: calibre-web
+spec:
+  image: "ghcr.io/linuxserver/calibre-web"
+  interval: 1h
+  provider: generic
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: calibre-web
+spec:
+  imageRepositoryRef:
+    name: calibre-web
+  filterTags:
+    # How does lsio docker images tags work: https://www.linuxserver.io/blog/docker-tags-so-many-tags-so-little-time#2-build-tag-static
+    pattern: '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)-ls(?P<build>\d+)$'
+    extract: "$build"
+  policy:
+    numerical:
+      order: asc
