@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: calibre-web
-          image: calibre-web # {"$imagepolicy": "apps-system:calibre-web"}
+          image: ghcr.io/linuxserver/calibre-web:0.6.24-ls313 # {"$imagepolicy": "apps-system:calibre-web"}
