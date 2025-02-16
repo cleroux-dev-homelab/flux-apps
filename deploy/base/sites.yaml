@@ -2,7 +2,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: sites
-  namespace: apps-system
+  namespace: flux-system
 spec:
   serviceAccountName: flux-apps
   interval: 1m
@@ -23,7 +23,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: sites-updates
-  namespace: apps-system
+  namespace: flux-system
 spec:
   serviceAccountName: flux-apps
   interval: 1m
@@ -44,7 +44,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
   name: sites
-  namespace: apps-system
+  namespace: flux-system
 spec:
   interval: 30m
   sourceRef:

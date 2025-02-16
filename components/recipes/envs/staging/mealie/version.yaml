@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: mealie
-          image: ghcr.io/mealie-recipes/mealie:v2.4.1 # {"$imagepolicy": "apps-system:mealie"}
+          image: ghcr.io/mealie-recipes/mealie:v2.4.1 # {"$imagepolicy": "flux-system:mealie"}

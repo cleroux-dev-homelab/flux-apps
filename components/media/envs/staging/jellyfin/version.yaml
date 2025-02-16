@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: jellyfin
-          image: ghcr.io/jellyfin/jellyfin:10.10.3 # {"$imagepolicy": "apps-system:jellyfin"}
+          image: ghcr.io/jellyfin/jellyfin:10.10.3 # {"$imagepolicy": "flux-system:jellyfin"}
