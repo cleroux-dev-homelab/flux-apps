@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: actual-server
-          image: ghcr.io/actualbudget/actual-server:25.1.0 # {"$imagepolicy": "apps-system:actual-server"}
+          image: ghcr.io/actualbudget/actual-server:25.2.1 # {"$imagepolicy": "apps-system:actual-server"}
