@@ -5,6 +5,7 @@ namespace: jellyfin-system
 
 resources:
   - ../../../bases/jellyfin
+  - ./ingress.yaml
 
 patches:
   - path: version.yaml

@@ -5,6 +5,7 @@ namespace: mealie
 
 resources:
   - ../../../bases/mealie
+  - ./ingress.yaml
 
 patches:
   - path: version.yaml

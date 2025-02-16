@@ -5,6 +5,7 @@ namespace: homer-dashboard
 
 resources:
   - ../../../bases/homer-dashboard
+  - ./ingress.yaml
 
 patches:
   - path: version.yaml

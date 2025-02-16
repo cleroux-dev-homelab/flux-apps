@@ -6,6 +6,8 @@ namespace: calibre-web
 resources:
   - ../../../bases/calibre-web
 
+  - ./ingress.yaml
+
 patches:
   - path: version.yaml
     target:

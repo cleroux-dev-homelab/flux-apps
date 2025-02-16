@@ -5,6 +5,7 @@ namespace: actual-server
 
 resources:
   - ../../../bases/actual-server
+  - ./ingress.yaml
 
 patches:
   - path: version.yaml
