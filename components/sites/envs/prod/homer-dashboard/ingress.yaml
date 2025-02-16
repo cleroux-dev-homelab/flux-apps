@@ -3,6 +3,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: homer-dashboard
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   ingressClassName: nginx-external
   rules:
@@ -16,3 +18,7 @@ spec:
                 name: homer-dashboard
                 port:
                   name: dashboard
+  tls:
+    - hosts:
+        - dashboard.${EXTERNAL_DOMAIN}
+      secretName: homer-dashboard-cert

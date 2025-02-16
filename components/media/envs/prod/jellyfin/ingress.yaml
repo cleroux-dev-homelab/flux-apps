@@ -3,6 +3,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: jellyfin
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   ingressClassName: nginx-external
   rules:
@@ -16,3 +18,7 @@ spec:
                 name: jellyfin
                 port:
                   name: jellyfin
+  tls:
+    - hosts:
+        - jellyfin.${EXTERNAL_DOMAIN}
+      secretName: jellyfin-cert
