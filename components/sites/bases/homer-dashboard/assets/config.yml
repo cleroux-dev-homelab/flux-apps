@@ -77,7 +77,7 @@ services:
         subtitle: "Budgetting"
         tag: "App"
         keywords: "budget finance self hosted"
-        url: "https://actual-server.lan/"
+        url: "https://actual.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
       - name: "Plex"
@@ -93,7 +93,7 @@ services:
         subtitle: "Book library"
         tag: "App"
         keywords: "books e-books library pdf kobo reader"
-        url: "http://omv-nas.lan:8083/"
+        url: "https://calibre.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
       - name: "Vikunja"
