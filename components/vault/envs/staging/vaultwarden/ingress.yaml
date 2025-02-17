@@ -1,0 +1,22 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vaultwarden
+spec:
+  ingressClassName: nginx-internal
+  rules:
+    - host: vaultwarden.${INTERNAL_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: vaultwarden
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - vaultwarden.${INTERNAL_DOMAIN}
+      secretName: vaultwarden-cert

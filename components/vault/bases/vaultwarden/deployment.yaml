@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vaultwarden
+  labels:
+    app: vaultwarden
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vaultwarden
+  template:
+    metadata:
+      labels:
+        app: vaultwarden
+    spec:
+      containers:
+        - name: vaultwarden
+          image: vaultwarden
+          env:
+            - name: DOMAIN
+              value: "https://vaultwarden.${EXTERNAL_DOMAIN}"
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          ports:
+            - containerPort: 80
+              name: http
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: vaultwarden

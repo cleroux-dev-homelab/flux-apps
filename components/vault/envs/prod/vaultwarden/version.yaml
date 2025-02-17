@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vaultwarden
+spec:
+  template:
+    spec:
+      containers:
+        - name: vaultwarden
+          image: ghcr.io/dani-garcia/vaultwarden:1.33.2 # {"$imagepolicy": "flux-system:vaultwarden"}
