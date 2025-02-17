@@ -21,6 +21,32 @@ spec:
           envFrom:
             - configMapRef:
                 name: mealie-config
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  key: user
+                  name: mealie-postgres-app
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mealie-postgres-app
+            - name: POSTGRES_SERVER
+              valueFrom:
+                secretKeyRef:
+                  key: host
+                  name: mealie-postgres-app
+            - name: POSTGRES_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: port
+                  name: mealie-postgres-app
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  key: dbname
+                  name: mealie-postgres-app
           ports:
             - name: mealie
               containerPort: 9000
