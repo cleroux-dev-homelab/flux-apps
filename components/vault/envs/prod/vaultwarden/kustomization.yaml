@@ -8,6 +8,7 @@ resources:
 
   - ./ingress.yaml
   - ./admin-token.yaml
+  - ./smtp-config.yaml
 
 patches:
   - path: version.yaml

@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: smtp-config
+stringData:
+    SMTP_HOST: ENC[AES256_GCM,data:7OXPel4kWO1kH4ePKPrI,iv:7/ezUZqw0ktXvZbayd4Bct53JwmRNuL0y4JoJzrIT9M=,tag:29hV0NiQvbB7x1oiLXmDHw==,type:str]
+    SMTP_FROM: ENC[AES256_GCM,data:gHduMPXyvcfqYogAssud6jMXKDFTZJY=,iv:6krh7zv6hLbTavuUxcMSPpYDi11y1uDZywE2jVZ3rto=,tag:p0fKUnIFpt1uk4ioW8gx8Q==,type:str]
+    SMTP_PORT: ENC[AES256_GCM,data:MdCo,iv:M4p3B+7kam+DDbuQuOh+w9OqFZar1xs4Z3eaB6Pa8Fs=,tag:kFm265yPhV4W7hW9te+2lg==,type:str]
+    SMTP_SECURITY: ENC[AES256_GCM,data:FPBC3pRTG2cu,iv:c45qYjLUsfebPBB5YuyvLSvos7kr5jOdSXRBvkQYTn4=,tag:J6Bqz9KJ9zqMl94P/FzmLg==,type:str]
+    SMTP_USERNAME: ENC[AES256_GCM,data:Rrsg8sK9mSuDm3t6C9drjCeH90NnfzQ=,iv:eU/63CM72bSnNJ6IVx5kgToyC21cwDaaLm7Bdf7rnNo=,tag:cx5cBHNzgObu5uno/wbXkA==,type:str]
+    SMTP_PASSWORD: ENC[AES256_GCM,data:WzbHkif6pwjmmZSMp1jA9+0qReCwWBIl2w==,iv:rzxPZcqqHboZmaDoo9cf5N70CUloTFj403ErgBHfClQ=,tag:HdQn7+eiIJx/mNaPFfzWEg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoNGN5aG9jMDJRVnVEUEZZ
+            czRlaEJDaURPQWhsRHNMNzhmSVZ0akNyYm5JCmV0S3ZKTXJSd0F3K1FCN3o1dmtE
+            QXVKUXRSYnA3WXJoU3pDZ2V2TlBjYUEKLS0tIDRjWGdYUUF4MUczS0pvK0RsalVk
+            OFk3ODU0NXVsUHI5elZaUjNYblEyK1EK/tzcaOgnbYjfSvl8lJYPYEtH/MQJJWu0
+            JBGP9eE9PG0Qgc7sOgWpOsXoNp2ZBoho1mrGH97TczdmLPnrsgmDtw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-02-17T15:36:33Z"
+    mac: ENC[AES256_GCM,data:Z4JY3xMGYjd/nAXcjBYIsHDL9DDsOfoRztplH/qXQwNSGFeCstyw9om4xTWmPyMk8nXxsUBaFhzxns4n0SCPVlkTWJ9sg8gtjCfI6iNlKbwfLi3Biv/vd3lPBmZOlTrrnlaTZBFPSw+CpHXy1i06eiluXWO1UUU1UFJLRdPM7nE=,iv:lZY4LLCraAEENp/uUlf8zwS1qiwTCLKOwFo9SFEbtcg=,tag:c9sACsHOATaohNAQ7zrPwg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.3

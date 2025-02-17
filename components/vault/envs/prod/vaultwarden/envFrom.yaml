@@ -10,3 +10,5 @@ spec:
           envFrom:
             - secretRef:
                 name: admin-token
+            - secretRef:
+                name: smtp-config
