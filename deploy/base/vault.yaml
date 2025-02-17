@@ -10,6 +10,10 @@ spec:
   timeout: 30s
   prune: true
   wait: true
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   sourceRef:
     kind: GitRepository
     name: flux-apps

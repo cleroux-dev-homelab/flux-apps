@@ -20,6 +20,8 @@ spec:
           env:
             - name: DOMAIN
               value: "https://vaultwarden.${EXTERNAL_DOMAIN}"
+            - name: SIGNUPS_ALLOWED
+              value: "false"
           volumeMounts:
             - name: data
               mountPath: /data

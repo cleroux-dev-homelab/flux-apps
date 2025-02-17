@@ -7,8 +7,12 @@ resources:
   - ../../../bases/vaultwarden
 
   - ./ingress.yaml
+  - ./admin-token.yaml
 
 patches:
   - path: version.yaml
+    target:
+      kind: Deployment
+  - path: ./envFrom.yaml
     target:
       kind: Deployment
