@@ -70,10 +70,18 @@ services:
 
       - name: "Calibre-web"
         logo: "assets/tools/calibre-web.png"
-        subtitle: "Book library"
+        subtitle: "Book Library"
         tag: "App"
         keywords: "books e-books library pdf kobo reader"
         url: "https://calibre.cleroux.dev"
+        target: "_blank" # optional html a tag target attribute
+
+      - name: "Mealie"
+        logo: "assets/tools/mealie.png"
+        subtitle: "Recipe Planner"
+        tag: "App"
+        keywords: "recipe meals planner"
+        url: "https://mealie.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
   - name: "Links"
