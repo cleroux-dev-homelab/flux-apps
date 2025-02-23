@@ -55,7 +55,7 @@ services:
       - name: "Actual budget"
         logo: "assets/tools/actual.png"
         subtitle: "Budgetting"
-        tag: "App"
+        tag: "Budget"
         keywords: "budget finance self hosted"
         url: "https://actual.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
@@ -63,7 +63,7 @@ services:
       - name: "Plex"
         logo: "assets/tools/plex.png"
         subtitle: "Media Library"
-        tag: "app"
+        tag: "Media"
         keywords: "self hosted plex movies shows music"
         url: "http://omv-nas.lan:32400/web/index.html#!/"
         target: "_blank" # optional html a tag target attribute
@@ -71,7 +71,7 @@ services:
       - name: "Calibre-web"
         logo: "assets/tools/calibre-web.png"
         subtitle: "Book Library"
-        tag: "App"
+        tag: "Books"
         keywords: "books e-books library pdf kobo reader"
         url: "https://calibre.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
@@ -79,7 +79,7 @@ services:
       - name: "Mealie"
         logo: "assets/tools/mealie.png"
         subtitle: "Recipe Planner"
-        tag: "App"
+        tag: "Recipes"
         keywords: "recipe meals planner"
         url: "https://mealie.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
@@ -117,7 +117,7 @@ services:
       - name: "Proxmox"
         logo: "assets/tools/proxmox.png"
         subtitle: "Server Admin"
-        tag: "Admin"
+        tag: "VMs"
         keywords: "self hosted docker container VM"
         url: "https://home-server.lan:8006/"
         target: "_blank" # optional html a tag target attribute
@@ -125,7 +125,7 @@ services:
       - name: "OpenMediaVault"
         logo: "assets/tools/omv.png"
         subtitle: "Local NAS"
-        tag: "app"
+        tag: "NAS"
         keywords: "self hosted NAS omv"
         url: "http://omv-nas.lan/#/login"
         target: "_blank" # optional html a tag target attribute
@@ -133,7 +133,7 @@ services:
       - name: "Portainer"
         logo: "assets/tools/portainer.png"
         subtitle: "Docker Admin"
-        tag: "Admin"
+        tag: "Container"
         keywords: "self hosted docker stack portainer"
         url: "http://omv-nas.lan:9000/#!/auth"
         target: "_blank" # optional html a tag target attribute
@@ -141,7 +141,7 @@ services:
       - name: "Grafana"
         logo: "assets/tools/grafana.png"
         subtitle: "Monitoring Dashboard"
-        tag: "Admin"
+        tag: "Monitoring"
         keywords: "self hosted docker stack monitoring grafana"
         url: "https://grafana.infra.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
@@ -149,7 +149,7 @@ services:
       - name: "OpenWRT"
         logo: "assets/tools/openwrt.png"
         subtitle: "Network admin"
-        tag: "Admin"
+        tag: "Network"
         keywords: "network configuration admin"
         url: "https://openwrt.lan/"
         target: "_blank" # optional html a tag target attribute
