@@ -50,7 +50,7 @@ links:
 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
 services:
   - name: "Applications"
-    icon: "fas fa-cloud"
+    icon: "fas fa-cloud-download"
     items:
       - name: "Actual budget"
         logo: "assets/tools/actual.png"
@@ -60,12 +60,12 @@ services:
         url: "https://actual.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
-      - name: "Plex"
-        logo: "assets/tools/plex.png"
+      - name: "Jellyfin"
+        logo: "assets/tools/jellyfin.png"
         subtitle: "Media Library"
         tag: "Media"
-        keywords: "self hosted plex movies shows music"
-        url: "http://omv-nas.lan:32400/web/index.html#!/"
+        keywords: "self hosted movies shows"
+        url: "http://omv-nas.lan:8096/"
         target: "_blank" # optional html a tag target attribute
 
       - name: "Calibre-web"
