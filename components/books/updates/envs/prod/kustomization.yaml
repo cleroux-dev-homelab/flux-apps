@@ -4,3 +4,4 @@ namespace: flux-system
 
 resources:
   - ./calibre-web.yaml
+  - ./audiobookshelf.yaml

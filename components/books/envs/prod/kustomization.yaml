@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - ./namespaces
   - ./calibre-web
+  - ./audiobookshelf

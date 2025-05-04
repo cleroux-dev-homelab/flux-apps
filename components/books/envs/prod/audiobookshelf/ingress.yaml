@@ -1,0 +1,32 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: audiobookshelf
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+
+    # Prevent 413 Request Entity Too Large error
+    # by increasing the maximum allowed size of the client request body
+    nginx.ingress.kubernetes.io/proxy-body-size: "10240m"
+
+    # audiobookshelf uses websockets for connection
+    nginx.ingress.kubernetes.io/proxy-send-timeout: 3600
+    nginx.ingress.kubernetes.io/proxy-read-timeout: 3600
+spec:
+  ingressClassName: nginx-external
+  rules:
+    - host: audiobookshelf.${EXTERNAL_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: audiobookshelf
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - audiobookshelf.${EXTERNAL_DOMAIN}
+      secretName: audiobookshelf-cert
