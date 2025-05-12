@@ -76,6 +76,14 @@ services:
         url: "https://calibre.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
+      - name: "AudioBookShelf"
+        logo: "assets/tools/audiobookshelf.png"
+        subtitle: "Audiobook Library"
+        tag: "Audiobooks"
+        keywords: "audiobook audio book library podcast"
+        url: "https://audiobookshelf.cleroux.dev"
+        target: "_blank" # optional html a tag target attribute
+
       - name: "Mealie"
         logo: "assets/tools/mealie.png"
         subtitle: "Recipe Planner"
