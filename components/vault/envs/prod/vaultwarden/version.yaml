@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: vaultwarden
-          image: ghcr.io/dani-garcia/vaultwarden:1.34.0 # {"$imagepolicy": "flux-system:vaultwarden"}
+          image: ghcr.io/dani-garcia/vaultwarden:1.34.1 # {"$imagepolicy": "flux-system:vaultwarden"}
