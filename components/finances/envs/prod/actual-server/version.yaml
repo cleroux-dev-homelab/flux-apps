@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: actual-server
-          image: ghcr.io/actualbudget/actual-server:25.9.0 # {"$imagepolicy": "flux-system:actual-server"}
+          image: ghcr.io/actualbudget/actual-server:25.11.0 # {"$imagepolicy": "flux-system:actual-server"}
