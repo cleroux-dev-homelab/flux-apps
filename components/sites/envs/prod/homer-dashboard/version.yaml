@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: homer-dashboard
-          image: b4bz/homer:v24.12.1 # {"$imagepolicy": "flux-system:homer-dashboard"}
+          image: b4bz/homer:v25.10.1 # {"$imagepolicy": "flux-system:homer-dashboard"}
