@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: audiobookshelf
-          image: ghcr.io/advplyr/audiobookshelf:2.30.0 # {"$imagepolicy": "flux-system:audiobookshelf"}
+          image: ghcr.io/advplyr/audiobookshelf:2.32.0 # {"$imagepolicy": "flux-system:audiobookshelf"}
