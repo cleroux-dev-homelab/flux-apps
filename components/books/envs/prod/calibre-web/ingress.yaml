@@ -1,29 +1,25 @@
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
   name: calibre-web
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-production
-    # Fix for calibre-web kobo sync: https://github.com/janeczku/calibre-web/wiki/Kobo-Integration#additional-hints
-    nginx.ingress.kubernetes.io/proxy-busy-buffers-size: "1024k"
-    nginx.ingress.kubernetes.io/proxy-buffers-number: "4 512k"
-    nginx.ingress.kubernetes.io/proxy-buffer-size: "1024k"
-    nginx.ingress.kubernetes.io/proxy-set-header: "X-Scheme https"
 spec:
-  ingressClassName: nginx-external
+  parentRefs:
+    - name: private-gateway
+      namespace: envoy-gateway-system
+  hostnames:
+    - calibre.${EXTERNAL_DOMAIN}
   rules:
-    - host: calibre.${EXTERNAL_DOMAIN}
-      http:
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: calibre-web
-                port:
-                  name: web
-  tls:
-    - hosts:
-        - calibre.${EXTERNAL_DOMAIN}
-      secretName: calibre-web-cert
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      filters:
+        - type: RequestHeaderModifier
+          requestHeaderModifier:
+            set:
+              - name: X-Scheme
+                value: https
+      backendRefs:
+        - name: calibre-web
+          port: 8083

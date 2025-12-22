@@ -12,3 +12,4 @@ spec:
       protocol: TCP
       port: 80
       targetPort: web
+      appProtocol: kubernetes.io/wss
