@@ -15,7 +15,10 @@ spec:
     spec:
       containers:
         - name: jellyfin
-          image: jellyfin/jellyfin:10.10.0
+          image: jellyfin/jellyfin:10.11.5
+          environment:
+            JELLYFIN_PublishedServerUrl: https://jellyfin.cleroux.dev
+            TZ: America/Toronto
           ports:
             - name: jellyfin
               containerPort: 8096
@@ -26,10 +29,11 @@ spec:
               mountPath: /cache
             - name: media
               mountPath: /media
-            # Share the device for hardware acceleration
-            - name: dev-dri
-              mountPath: /dev/dri
-
+            - mountPath: /dev/dri
+              name: device-dri
+          securityContext:
+            privileged: true # Container must run as privileged inside of the pod, required for hardware acceleration
+            supplementalGroups: [303] # render group
       volumes:
         - name: config
           persistentVolumeClaim:
@@ -37,11 +41,11 @@ spec:
         - name: cache
           persistentVolumeClaim:
             claimName: jellyfin-cache
-        - name: media
-          persistentVolumeClaim:
-            claimName: jellyfin-media
-        # Device for hardware acceleration
-        - name: dev-dri
+        - name: device-dri
           hostPath:
             path: /dev/dri
-            type: Directory
+        - name: media
+          nfs:
+            server: totoro.lan
+            path: /Media
+            readOnly: true

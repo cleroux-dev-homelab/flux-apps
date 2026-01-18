@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - ./books.yaml
-  # - ./media.yaml
+  - ./media.yaml
   - ./sites.yaml
   - ./finances.yaml
   - ./recipes.yaml
