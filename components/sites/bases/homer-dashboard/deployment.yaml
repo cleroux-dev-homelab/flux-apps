@@ -29,6 +29,7 @@ spec:
               git clone https://github.com/cleroux-dev-homelab/flux-apps.git --depth 1
 
               cp -a /config/. /assets
+              cp flux-apps/components/sites/bases/homer-dashboard/assets/custom.css /assets
               cp -r flux-apps/components/sites/bases/homer-dashboard/assets/backgrounds /assets
               cp -r flux-apps/components/sites/bases/homer-dashboard/assets/icons /assets
               cp -r flux-apps/components/sites/bases/homer-dashboard/assets/tools /assets

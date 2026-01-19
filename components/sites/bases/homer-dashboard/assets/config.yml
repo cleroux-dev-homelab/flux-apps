@@ -6,6 +6,9 @@ logo: "assets/icons/logo.png"
 header: true
 footer: false
 
+stylesheet:
+  - "assets/custom.css"
+
 # Optional theme customization
 theme: default
 colors:

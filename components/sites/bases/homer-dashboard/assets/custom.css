@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+/* Custom icon color for the dark theme */
+body #app.dark .group-title {
+  --highlight-primary: #d8dee9;
+}
+
+/* Custom icon color for the light theme */
+body #app .group-title {
+  --highlight-primary: #363636;
+}
