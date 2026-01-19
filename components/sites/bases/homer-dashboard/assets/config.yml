@@ -65,7 +65,7 @@ services:
         subtitle: "Media Library"
         tag: "Media"
         keywords: "self hosted movies shows"
-        url: "http://omv-nas.lan:8096/"
+        url: "https://jellyfin.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
       - name: "Calibre-web"
@@ -122,30 +122,6 @@ services:
   - name: "Admin"
     icon: "fas fa-server"
     items:
-      - name: "Proxmox"
-        logo: "assets/tools/proxmox.png"
-        subtitle: "Server Admin"
-        tag: "VMs"
-        keywords: "self hosted docker container VM"
-        url: "https://home-server.lan:8006/"
-        target: "_blank" # optional html a tag target attribute
-
-      - name: "OpenMediaVault"
-        logo: "assets/tools/omv.png"
-        subtitle: "Local NAS"
-        tag: "NAS"
-        keywords: "self hosted NAS omv"
-        url: "http://omv-nas.lan/#/login"
-        target: "_blank" # optional html a tag target attribute
-
-      - name: "Portainer"
-        logo: "assets/tools/portainer.png"
-        subtitle: "Docker Admin"
-        tag: "Container"
-        keywords: "self hosted docker stack portainer"
-        url: "http://omv-nas.lan:9000/#!/auth"
-        target: "_blank" # optional html a tag target attribute
-
       - name: "Grafana"
         logo: "assets/tools/grafana.png"
         subtitle: "Monitoring Dashboard"
@@ -154,10 +130,10 @@ services:
         url: "https://grafana.infra.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
-      - name: "OpenWRT"
-        logo: "assets/tools/openwrt.png"
-        subtitle: "Network admin"
-        tag: "Network"
-        keywords: "network configuration admin"
-        url: "https://openwrt.lan/"
+      - name: "Vaultwarden"
+        logo: "assets/tools/vaultwarden.png"
+        subtitle: "Vault Password"
+        tag: "Vault"
+        keywords: "self hosted docker stack vault bitwarden"
+        url: "https://vaultwarden.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
