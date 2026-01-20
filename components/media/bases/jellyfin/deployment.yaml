@@ -16,6 +16,9 @@ spec:
       containers:
         - name: jellyfin
           image: jellyfin/jellyfin:10.11.5
+          securityContext:
+            privileged: true # Container must run as privileged inside of the pod, required for hardware acceleration
+            supplementalGroups: [303] # render group
           environment:
             JELLYFIN_PublishedServerUrl: https://jellyfin.cleroux.dev
             TZ: America/Toronto
@@ -27,13 +30,16 @@ spec:
               mountPath: /config
             - name: cache
               mountPath: /cache
-            - name: media
-              mountPath: /media
+
+            # HW accel device
             - mountPath: /dev/dri
               name: device-dri
-          securityContext:
-            privileged: true # Container must run as privileged inside of the pod, required for hardware acceleration
-            supplementalGroups: [303] # render group
+
+            # NFS Shares
+            - name: nfs-movies
+              mountPath: /movies
+            - name: nfs-shows
+              mountPath: /shows
       volumes:
         - name: config
           persistentVolumeClaim:
@@ -41,11 +47,18 @@ spec:
         - name: cache
           persistentVolumeClaim:
             claimName: jellyfin-cache
+
+        # HW accel device
         - name: device-dri
           hostPath:
             path: /dev/dri
-        - name: media
-          nfs:
-            server: totoro.lan
-            path: /Media
+
+        # NFS shares
+        - name: nfs-movies
+          persistentVolumeClaim:
+            claimName: jellyfin-pvc-movies
+            readOnly: true
+        - name: nfs-shows
+          persistentVolumeClaim:
+            claimName: jellyfin-pvc-shows
             readOnly: true
