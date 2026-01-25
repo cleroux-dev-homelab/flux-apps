@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jellyseerr
+  labels:
+    app: jellyseerr
+spec:
+  serviceName: jellyseerr
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyseerr
+  template:
+    metadata:
+      labels:
+        app: jellyseerr
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: jellyseerr
+          image: ghcr.io/fallenbagel/jellyseerr:2.7.3
+          ports:
+            - name: http
+              containerPort: 5055
+          env:
+            - name: LOG_LEVEL
+              value: "debug"
+            - name: TZ
+              value: ${TIMEZONE}
+            - name: PORT
+              value: "5055"
+          volumeMounts:
+            - name: seerr-config
+              mountPath: /app/config
+
+          # Compose healthcheck equivalent
+          startupProbe:
+            httpGet:
+              path: /api/v1/status
+              port: 5055
+            # start_period: 20s
+            initialDelaySeconds: 20
+            timeoutSeconds: 3
+            periodSeconds: 15
+            failureThreshold: 3
+
+          livenessProbe:
+            httpGet:
+              path: /api/v1/status
+              port: 5055
+            timeoutSeconds: 3
+            periodSeconds: 15
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /api/v1/status
+              port: 5055
+            timeoutSeconds: 3
+            periodSeconds: 15
+            failureThreshold: 3
+
+  volumeClaimTemplates:
+    - metadata:
+        name: seerr-config
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi
