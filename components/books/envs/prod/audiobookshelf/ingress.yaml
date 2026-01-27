@@ -17,16 +17,17 @@ spec:
       backendRefs:
         - name: audiobookshelf
           port: 80
+          weight: 1
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: BackendTrafficPolicy
 metadata:
   name: audiobookshelf
 spec:
-  targetRef:
-    group: gateway.networking.k8s.io
-    kind: HTTPRoute
-    name: audiobookshelf
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: audiobookshelf
   requestBuffer:
     limit: 4095Mi
   timeout:
