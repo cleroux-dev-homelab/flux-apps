@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ./dragonfly
+  - ./postgres
+
+  - ./config.yaml
+  - ./deployment.yaml
+  - ./media-pvc.yaml
+  - ./pvc.yaml
+  - ./route.yaml
+  - ./secrets.yaml
