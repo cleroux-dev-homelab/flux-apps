@@ -6,5 +6,6 @@ resources:
   - ./media.yaml
   - ./sites.yaml
   - ./finances.yaml
+  - ./paperless-ngx.yaml
   - ./recipes.yaml
   - ./vault.yaml

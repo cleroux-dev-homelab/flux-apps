@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless-webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless-webserver
+  template:
+    metadata:
+      labels:
+        app: paperless-webserver
+    spec:
+      containers:
+        - name: paperless
+          image: ghcr.io/paperless-ngx/paperless-ngx:2.20.6
+          ports:
+            - name: http
+              containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: paperless-env
+            - secretRef:
+                name: paperless-secret-env
+          env:
+            - name: PAPERLESS_REDIS
+              value: "redis://:paperless@paperless-redis:6379"
+
+            - name: PAPERLESS_DBHOST
+              value: "paperless-pg-rw"
+            - name: PAPERLESS_DBNAME
+              value: "paperless"
+            - name: PAPERLESS_DBUSER
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-db-app-user
+                  key: username
+            - name: PAPERLESS_DBPASS
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-db-app-user
+                  key: password
+
+          volumeMounts:
+            - name: data
+              mountPath: /usr/src/paperless/data
+            - name: media
+              mountPath: /usr/src/paperless/media
+            - name: export
+              mountPath: /usr/src/paperless/export
+            - name: consume
+              mountPath: /usr/src/paperless/consume
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: paperless-data
+        - name: media
+          persistentVolumeClaim:
+            claimName: paperless-media
+        - name: export
+          persistentVolumeClaim:
+            claimName: paperless-export
+        - name: consume
+          persistentVolumeClaim:
+            claimName: paperless-consume
