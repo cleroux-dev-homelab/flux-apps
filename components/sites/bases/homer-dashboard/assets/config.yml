@@ -95,6 +95,14 @@ services:
         url: "https://mealie.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
+      - name: "Paperless-ngx"
+        logo: "assets/tools/paperless-ngx.png"
+        subtitle: "Documents Store"
+        tag: "Documents"
+        keywords: "documents invoices receipts"
+        url: "https://paperless.cleroux.dev"
+        target: "_blank" # optional html a tag target attribute
+
   - name: "Links"
     icon: "fas fa-link"
     items:
