@@ -13,12 +13,16 @@ spec:
       labels:
         app: jellyfin
     spec:
+      securityContext:
+        fsGroup: 100 # Be part of users group
+        supplementalGroups:
+          - 303 # render
+          - 100 # users
       containers:
         - name: jellyfin
           image: jellyfin/jellyfin:10.11.5
           securityContext:
             privileged: true # Container must run as privileged inside of the pod, required for hardware acceleration
-            supplementalGroups: [303] # render group
           environment:
             JELLYFIN_PublishedServerUrl: https://jellyfin.cleroux.dev
             TZ: America/Toronto
