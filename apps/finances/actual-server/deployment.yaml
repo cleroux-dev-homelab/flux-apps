@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: actual-server
-          image: actual-server
+          image: ghcr.io/actualbudget/actual-server:26.6.0 # {"$imagepolicy": "flux-system:actual-server"}
           ports:
             - name: https
               containerPort: 5006
