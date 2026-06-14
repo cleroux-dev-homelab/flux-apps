@@ -16,12 +16,17 @@ spec:
     spec:
       containers:
         - name: vaultwarden
-          image: vaultwarden
+          image: ghcr.io/dani-garcia/vaultwarden:1.36.0 # {"$imagepolicy": "flux-system:vaultwarden"}
           env:
             - name: DOMAIN
               value: "https://vaultwarden.${EXTERNAL_DOMAIN}"
             - name: SIGNUPS_ALLOWED
               value: "false"
+          envFrom:
+            - secretRef:
+                name: admin-token
+            - secretRef:
+                name: smtp-config
           volumeMounts:
             - name: data
               mountPath: /data

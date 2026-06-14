@@ -4,11 +4,10 @@ kind: Kustomization
 namespace: vaultwarden
 
 resources:
-  - ../../../bases/vaultwarden
+  - ./auth
 
+  - ./deployment.yaml
   - ./ingress.yaml
-
-patches:
-  - path: version.yaml
-    target:
-      kind: Deployment
+  - ./namespace.yaml
+  - ./pvc.yaml
+  - ./service.yaml
