@@ -4,11 +4,10 @@ kind: Kustomization
 namespace: mealie
 
 resources:
-  - ../../../bases/mealie
+  - ./config.yaml
+  - ./database.yaml
+  - ./deployment.yaml
   - ./ingress.yaml
-
-patches:
-  - path: version.yaml
-    target:
-      kind: Deployment
-      name: mealie
+  - ./namespace.yaml
+  - ./pvc.yaml
+  - ./service.yaml
