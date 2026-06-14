@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: paperless-ngx
 
 resources:
   - ./dragonfly
@@ -8,6 +9,7 @@ resources:
   - ./config.yaml
   - ./deployment.yaml
   - ./media-pvc.yaml
+  - ./namespace.yaml
   - ./pvc.yaml
   - ./route.yaml
   - ./secrets.yaml
