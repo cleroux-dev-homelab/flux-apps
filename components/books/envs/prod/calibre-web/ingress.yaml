@@ -20,6 +20,8 @@ spec:
             set:
               - name: X-Scheme
                 value: https
+              - name: X-Forwarded-Host
+                value: calibre.${EXTERNAL_DOMAIN}
       backendRefs:
         - name: calibre-web
           port: 8083
