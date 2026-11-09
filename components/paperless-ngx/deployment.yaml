@@ -25,7 +25,7 @@ spec:
                 name: paperless-secret-env
           env:
             - name: PAPERLESS_REDIS
-              value: "redis://:paperless@paperless-redis:6379"
+              value: "redis://:paperless@paperless-valkey:6379"
 
             - name: PAPERLESS_DBHOST
               value: "paperless-pg-rw"
