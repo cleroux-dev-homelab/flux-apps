@@ -8,7 +8,7 @@ spec:
     - name: private-gateway
       namespace: envoy-gateway-system
   hostnames:
-    - calibre.${EXTERNAL_DOMAIN}
+    - calibre.${PRIVATE_DOMAIN}
   rules:
     - matches:
         - path:
@@ -21,7 +21,7 @@ spec:
               - name: X-Scheme
                 value: https
               - name: X-Forwarded-Host
-                value: calibre.${EXTERNAL_DOMAIN}
+                value: calibre.${PRIVATE_DOMAIN}
       backendRefs:
         - name: calibre-web
           port: 8083

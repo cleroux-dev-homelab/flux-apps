@@ -10,5 +10,5 @@ data:
   TZ: ${TIMEZONE}
   MAX_WORKERS: "1"
   WEB_CONCURRENCY: "1"
-  BASE_URL: https://mealie.${EXTERNAL_DOMAIN}
+  BASE_URL: https://mealie.${PRIVATE_DOMAIN}
   DB_ENGINE: postgres

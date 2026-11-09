@@ -24,7 +24,7 @@ spec:
           securityContext:
             privileged: true # Container must run as privileged inside of the pod, required for hardware acceleration
           environment:
-            JELLYFIN_PublishedServerUrl: https://jellyfin.cleroux.dev
+            JELLYFIN_PublishedServerUrl: https://jellyfin.home.cleroux.dev
             TZ: America/Toronto
           ports:
             - name: jellyfin

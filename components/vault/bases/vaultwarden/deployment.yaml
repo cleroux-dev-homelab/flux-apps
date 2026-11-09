@@ -19,7 +19,7 @@ spec:
           image: vaultwarden
           env:
             - name: DOMAIN
-              value: "https://vaultwarden.${EXTERNAL_DOMAIN}"
+              value: "https://vaultwarden.${PRIVATE_DOMAIN}"
             - name: SIGNUPS_ALLOWED
               value: "false"
           volumeMounts:

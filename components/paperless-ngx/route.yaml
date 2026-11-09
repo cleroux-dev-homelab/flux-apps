@@ -21,7 +21,7 @@ spec:
     - name: private-gateway
       namespace: envoy-gateway-system
   hostnames:
-    - paperless.${EXTERNAL_DOMAIN}
+    - paperless.${PRIVATE_DOMAIN}
   rules:
     - matches:
         - path:

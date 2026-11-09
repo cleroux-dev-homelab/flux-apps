@@ -8,7 +8,7 @@ spec:
     - name: private-gateway
       namespace: envoy-gateway-system
   hostnames:
-    - actual.${EXTERNAL_DOMAIN}
+    - actual.${PRIVATE_DOMAIN}
   rules:
     - matches:
         - path:

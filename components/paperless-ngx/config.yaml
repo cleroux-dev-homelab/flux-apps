@@ -6,4 +6,4 @@ data:
   # Example placeholders; replace with your docker-compose.env contents
   PAPERLESS_TIME_ZONE: "America/Toronto"
   PAPERLESS_OCR_LANGUAGE: "eng+fra" # english + french OCR
-  PAPERLESS_URL: "https://paperless.${EXTERNAL_DOMAIN}"
+  PAPERLESS_URL: "https://paperless.${PRIVATE_DOMAIN}"

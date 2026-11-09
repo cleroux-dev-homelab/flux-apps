@@ -8,7 +8,7 @@ spec:
     - name: private-gateway
       namespace: envoy-gateway-system
   hostnames:
-    - jellyfin.${EXTERNAL_DOMAIN}
+    - jellyfin.${PRIVATE_DOMAIN}
   rules:
     - matches:
         - path:

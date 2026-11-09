@@ -60,7 +60,7 @@ services:
         subtitle: "Budgetting"
         tag: "Budget"
         keywords: "budget finance self hosted"
-        url: "https://actual.cleroux.dev"
+        url: "https://actual.home.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
       - name: "Jellyfin"
@@ -68,7 +68,7 @@ services:
         subtitle: "Media Library"
         tag: "Media"
         keywords: "self hosted movies shows"
-        url: "https://jellyfin.cleroux.dev"
+        url: "https://jellyfin.home.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
       - name: "Calibre-web"
@@ -76,7 +76,7 @@ services:
         subtitle: "Book Library"
         tag: "Books"
         keywords: "books e-books library pdf kobo reader"
-        url: "https://calibre.cleroux.dev"
+        url: "https://calibre.home.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
       - name: "AudioBookShelf"
@@ -84,7 +84,7 @@ services:
         subtitle: "Audiobook Library"
         tag: "Audiobooks"
         keywords: "audiobook audio book library podcast"
-        url: "https://audiobookshelf.cleroux.dev"
+        url: "https://audiobookshelf.home.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
       - name: "Mealie"
@@ -92,7 +92,7 @@ services:
         subtitle: "Recipe Planner"
         tag: "Recipes"
         keywords: "recipe meals planner"
-        url: "https://mealie.cleroux.dev"
+        url: "https://mealie.home.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
       - name: "Paperless-ngx"
@@ -100,7 +100,7 @@ services:
         subtitle: "Documents Store"
         tag: "Documents"
         keywords: "documents invoices receipts"
-        url: "https://paperless.cleroux.dev"
+        url: "https://paperless.home.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
   - name: "Links"
@@ -138,7 +138,7 @@ services:
         subtitle: "Monitoring Dashboard"
         tag: "Monitoring"
         keywords: "self hosted docker stack monitoring grafana"
-        url: "https://grafana.infra.cleroux.dev"
+        url: "https://grafana.home.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
 
       - name: "Vaultwarden"
@@ -146,5 +146,5 @@ services:
         subtitle: "Vault Password"
         tag: "Vault"
         keywords: "self hosted docker stack vault bitwarden"
-        url: "https://vaultwarden.cleroux.dev"
+        url: "https://vaultwarden.home.cleroux.dev"
         target: "_blank" # optional html a tag target attribute
