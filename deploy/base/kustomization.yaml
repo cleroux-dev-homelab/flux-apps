@@ -2,10 +2,40 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ./books.yaml
-  - ./media.yaml
-  - ./sites.yaml
-  - ./finances.yaml
+  - ./actual-server.yaml
+  - ./audiobookshelf.yaml
+  - ./calibre-web.yaml
+  - ./homer-dashboard.yaml
+  - ./jellyfin.yaml
+  - ./jellyseerr.yaml
+  - ./mealie.yaml
   - ./paperless-ngx.yaml
-  - ./recipes.yaml
-  - ./vault.yaml
+  - ./vaultwarden.yaml
+
+patches:
+  - target:
+      group: kustomize.toolkit.fluxcd.io
+      kind: Kustomization
+    patch: |
+      apiVersion: kustomize.toolkit.fluxcd.io/v1
+      kind: Kustomization
+      metadata:
+        name: all
+      spec:
+        serviceAccountName: flux-apps
+        interval: 1m
+        retryInterval: 30s
+        timeout: 30s
+        prune: true
+        wait: true
+        decryption:
+          provider: sops
+          secretRef:
+            name: sops-age
+        sourceRef:
+          kind: GitRepository
+          name: flux-apps
+        postBuild:
+          substituteFrom:
+            - kind: ConfigMap
+              name: flux-runtime-info

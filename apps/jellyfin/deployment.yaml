@@ -1,0 +1,70 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      securityContext:
+        fsGroup: 100 # Be part of users group
+        supplementalGroups:
+          - 303 # render
+          - 100 # users
+      containers:
+        - name: jellyfin
+          image: ghcr.io/jellyfin/jellyfin:10.11.11
+          securityContext:
+            privileged: true # Container must run as privileged inside of the pod, required for hardware acceleration
+          env:
+            - name: JELLYFIN_PublishedServerUrl
+              value: https://jellyfin.home.cleroux.dev
+            - name: TZ
+              value: America/Toronto
+          ports:
+            - name: jellyfin
+              containerPort: 8096
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: cache
+              mountPath: /cache
+
+            # HW accel device
+            - mountPath: /dev/dri
+              name: device-dri
+
+            # NFS Shares
+            - name: nfs-movies
+              mountPath: /movies
+            - name: nfs-shows
+              mountPath: /shows
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: jellyfin-config
+        - name: cache
+          persistentVolumeClaim:
+            claimName: jellyfin-cache
+
+        # HW accel device
+        - name: device-dri
+          hostPath:
+            path: /dev/dri
+
+        # NFS shares
+        - name: nfs-movies
+          persistentVolumeClaim:
+            claimName: jellyfin-pvc-movies
+            readOnly: true
+        - name: nfs-shows
+          persistentVolumeClaim:
+            claimName: jellyfin-pvc-shows
+            readOnly: true
