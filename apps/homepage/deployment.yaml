@@ -54,8 +54,14 @@ spec:
             - name: config
               mountPath: /app/config
               readOnly: true
+            - name: images
+              mountPath: /app/public/images
+              readOnly: true
       volumes:
         - name: config
           configMap:
             name: homepage-config
+        - name: images
+          configMap:
+            name: homepage-images
       restartPolicy: Always

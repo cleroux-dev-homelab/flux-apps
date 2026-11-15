@@ -1,8 +1,23 @@
 ---
 # Apps in this repo come from gethomepage.dev/* annotations on their
-# HTTPRoutes. Only services deployed outside this repo are listed here.
+# HTTPRoutes. Only services deployed elsewhere and external links are
+# listed here.
 - Admin:
     - Grafana:
         icon: grafana.png
         href: https://grafana.${PRIVATE_DOMAIN}
         description: Monitoring Dashboard
+
+- Links:
+    - YouTube:
+        icon: youtube.png
+        href: https://youtube.com
+        description: Videos
+    - GitHub:
+        icon: github.png
+        href: https://github.com
+        description: Development
+    - Codeberg:
+        icon: codeberg.png
+        href: https://codeberg.org
+        description: Development

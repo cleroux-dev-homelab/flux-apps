@@ -2,6 +2,11 @@
 title: Homelab Dashboard
 theme: dark
 color: slate
+background:
+  image: /images/background.webp
+  # Only the values safelisted in Homepage's _app.jsx take effect
+  blur: xs
+  brightness: 75
 headerStyle: boxed
 statusStyle: dot
 
@@ -10,5 +15,8 @@ layout:
     style: row
     columns: 4
   Admin:
+    style: row
+    columns: 4
+  Links:
     style: row
     columns: 4

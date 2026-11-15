@@ -13,15 +13,19 @@ resources:
 configMapGenerator:
   - name: homepage-config
     files:
-      - ./config/bookmarks.yaml
       - ./config/kubernetes.yaml
       - ./config/services.yaml
       - ./config/settings.yaml
-      - ./config/widgets.yaml
     literals:
       # Unused, but Homepage exits when a config file it reads is missing
       # and /app/config is read-only
+      - bookmarks.yaml=
       - custom.css=
       - custom.js=
       - docker.yaml=
       - proxmox.yaml=
+      - widgets.yaml=
+  # Served by Homepage at /images/, see background in config/settings.yaml
+  - name: homepage-images
+    files:
+      - ./images/background.webp
