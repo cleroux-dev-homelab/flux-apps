@@ -5,7 +5,7 @@ metadata:
   name: vikunja
 spec:
   selector:
-    app: vikunja
+    app.kubernetes.io/name: vikunja
   type: ClusterIP
   ports:
     - name: http

@@ -5,7 +5,7 @@ metadata:
   name: jellyfin
 spec:
   selector:
-    app: jellyfin
+    app.kubernetes.io/name: jellyfin
   type: ClusterIP
   ports:
     - name: jellyfin

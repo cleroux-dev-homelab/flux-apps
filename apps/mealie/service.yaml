@@ -5,7 +5,7 @@ metadata:
   name: mealie
 spec:
   selector:
-    app: mealie
+    app.kubernetes.io/name: mealie
   type: ClusterIP
   ports:
     - name: mealie

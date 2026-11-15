@@ -5,7 +5,7 @@ metadata:
   name: audiobookshelf
 spec:
   selector:
-    app: audiobookshelf
+    app.kubernetes.io/name: audiobookshelf
   type: ClusterIP
   ports:
     - name: web

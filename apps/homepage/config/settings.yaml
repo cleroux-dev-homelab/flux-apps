@@ -1,0 +1,14 @@
+---
+title: Homelab Dashboard
+theme: dark
+color: slate
+headerStyle: boxed
+statusStyle: dot
+
+layout:
+  Applications:
+    style: row
+    columns: 4
+  Admin:
+    style: row
+    columns: 4

@@ -1,0 +1,8 @@
+---
+# Apps in this repo come from gethomepage.dev/* annotations on their
+# HTTPRoutes. Only services deployed outside this repo are listed here.
+- Admin:
+    - Grafana:
+        icon: grafana.png
+        href: https://grafana.${PRIVATE_DOMAIN}
+        description: Monitoring Dashboard

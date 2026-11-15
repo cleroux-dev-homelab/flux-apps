@@ -4,16 +4,16 @@ kind: Deployment
 metadata:
   name: vikunja
   labels:
-    app: vikunja
+    app.kubernetes.io/name: vikunja
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: vikunja
+      app.kubernetes.io/name: vikunja
   template:
     metadata:
       labels:
-        app: vikunja
+        app.kubernetes.io/name: vikunja
     spec:
       securityContext:
         fsGroup: 1000 # Image runs as uid 1000, files volume must be writable

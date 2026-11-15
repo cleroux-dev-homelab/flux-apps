@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: jellyseerr
   labels:
-    app: jellyseerr
+    app.kubernetes.io/name: jellyseerr
 spec:
   selector:
-    app: jellyseerr
+    app.kubernetes.io/name: jellyseerr
   ports:
     - name: http
       port: 5055

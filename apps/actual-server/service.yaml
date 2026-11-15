@@ -5,7 +5,7 @@ metadata:
   name: actual-server
 spec:
   selector:
-    app: actual-server
+    app.kubernetes.io/name: actual-server
   type: ClusterIP
   ports:
     - name: https

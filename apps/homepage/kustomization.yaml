@@ -1,0 +1,27 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: homepage
+
+resources:
+  - ./namespace.yaml
+  - ./rbac.yaml
+  - ./deployment.yaml
+  - ./service.yaml
+  - ./route.yaml
+
+configMapGenerator:
+  - name: homepage-config
+    files:
+      - ./config/bookmarks.yaml
+      - ./config/kubernetes.yaml
+      - ./config/services.yaml
+      - ./config/settings.yaml
+      - ./config/widgets.yaml
+    literals:
+      # Unused, but Homepage exits when a config file it reads is missing
+      # and /app/config is read-only
+      - custom.css=
+      - custom.js=
+      - docker.yaml=
+      - proxmox.yaml=

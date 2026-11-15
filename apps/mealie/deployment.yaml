@@ -4,16 +4,16 @@ kind: Deployment
 metadata:
   name: mealie
   labels:
-    app: mealie
+    app.kubernetes.io/name: mealie
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mealie
+      app.kubernetes.io/name: mealie
   template:
     metadata:
       labels:
-        app: mealie
+        app.kubernetes.io/name: mealie
     spec:
       containers:
         - name: mealie

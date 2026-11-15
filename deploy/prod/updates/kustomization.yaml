@@ -9,7 +9,7 @@ resources:
   - ./actual-server.yaml
   - ./audiobookshelf.yaml
   - ./calibre-web.yaml
-  - ./homer-dashboard.yaml
+  - ./homepage.yaml
   - ./jellyfin.yaml
   - ./mealie.yaml
   - ./vaultwarden.yaml

@@ -7,11 +7,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: calibre-web
+      app.kubernetes.io/name: calibre-web
   template:
     metadata:
       labels:
-        app: calibre-web
+        app.kubernetes.io/name: calibre-web
     spec:
       containers:
         - name: calibre-web

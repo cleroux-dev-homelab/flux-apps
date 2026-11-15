@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: vaultwarden
   labels:
-    app: vaultwarden
+    app.kubernetes.io/name: vaultwarden
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: vaultwarden
+      app.kubernetes.io/name: vaultwarden
   template:
     metadata:
       labels:
-        app: vaultwarden
+        app.kubernetes.io/name: vaultwarden
     spec:
       containers:
         - name: vaultwarden

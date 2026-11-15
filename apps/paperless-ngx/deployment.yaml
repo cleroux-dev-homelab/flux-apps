@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: paperless-webserver
+      app.kubernetes.io/name: paperless-webserver
   template:
     metadata:
       labels:
-        app: paperless-webserver
+        app.kubernetes.io/name: paperless-webserver
     spec:
       containers:
         - name: paperless

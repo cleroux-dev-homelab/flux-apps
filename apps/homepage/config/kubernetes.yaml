@@ -1,0 +1,5 @@
+---
+mode: cluster
+# Apps are discovered from gethomepage.dev/* annotations on their HTTPRoutes
+gateway: true
+ingress: false
