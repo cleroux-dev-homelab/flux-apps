@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vikunja-config
+data:
+  VIKUNJA_SERVICE_PUBLICURL: https://vikunja.${PRIVATE_DOMAIN}
+  VIKUNJA_SERVICE_TIMEZONE: ${TIMEZONE}
+  VIKUNJA_SERVICE_ENABLEREGISTRATION: "false"
+  VIKUNJA_DEFAULTSETTINGS_TIMEZONE: ${TIMEZONE}
+  VIKUNJA_DATABASE_TYPE: postgres

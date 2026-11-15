@@ -11,6 +11,7 @@ resources:
   - ./mealie.yaml
   - ./paperless-ngx.yaml
   - ./vaultwarden.yaml
+  - ./vikunja.yaml
 
 patches:
   - target:

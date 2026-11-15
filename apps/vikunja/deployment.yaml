@@ -1,0 +1,66 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vikunja
+  labels:
+    app: vikunja
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vikunja
+  template:
+    metadata:
+      labels:
+        app: vikunja
+    spec:
+      securityContext:
+        fsGroup: 1000 # Image runs as uid 1000, files volume must be writable
+      containers:
+        - name: vikunja
+          image: docker.io/vikunja/vikunja:2.8.0 # {"$imagepolicy": "flux-system:vikunja"}
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: vikunja-config
+            - secretRef:
+                name: vikunja-secret
+          env:
+            - name: VIKUNJA_DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  key: user
+                  name: vikunja-postgres-app
+            - name: VIKUNJA_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: vikunja-postgres-app
+            - name: VIKUNJA_DATABASE_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: host
+                  name: vikunja-postgres-app
+            - name: VIKUNJA_DATABASE_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  key: dbname
+                  name: vikunja-postgres-app
+          ports:
+            - name: http
+              containerPort: 3456
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 10
+            failureThreshold: 3
+          volumeMounts:
+            - name: files
+              mountPath: /app/vikunja/files
+      volumes:
+        - name: files
+          persistentVolumeClaim:
+            claimName: vikunja
+      restartPolicy: Always

@@ -13,3 +13,4 @@ resources:
   - ./jellyfin.yaml
   - ./mealie.yaml
   - ./vaultwarden.yaml
+  - ./vikunja.yaml
