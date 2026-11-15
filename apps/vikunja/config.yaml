@@ -9,3 +9,12 @@ data:
   VIKUNJA_SERVICE_ENABLEREGISTRATION: "false"
   VIKUNJA_DEFAULTSETTINGS_TIMEZONE: ${TIMEZONE}
   VIKUNJA_DATABASE_TYPE: postgres
+  # Log in through Authelia on calcifer. Accounts are created on first login.
+  # Client secret is in secret.yaml, the client is set up in calcifer's
+  # authelia.nix in the NixOS config.
+  VIKUNJA_AUTH_LOCAL_ENABLED: "false"
+  VIKUNJA_AUTH_OPENID_ENABLED: "true"
+  VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_NAME: Authelia
+  VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_AUTHURL: https://auth.${PRIVATE_DOMAIN}
+  VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_CLIENTID: vikunja
+  VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_SCOPE: openid profile email
