@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,7 +14,7 @@ spec:
     spec:
       containers:
         - name: audiobookshelf
-          image: ghcr.io/advplyr/audiobookshelf:2.37.2 # {"$imagepolicy": "flux-system:audiobookshelf"}
+          image: ghcr.io/advplyr/audiobookshelf:2.38.0 # {"$imagepolicy": "flux-system:audiobookshelf"}
           envFrom:
             - configMapRef:
                 name: audiobookshelf-config
@@ -31,7 +30,6 @@ spec:
               mountPath: /config
             - name: metadata
               mountPath: /metadata
-
       volumes:
         - name: audiobooks
           persistentVolumeClaim:
