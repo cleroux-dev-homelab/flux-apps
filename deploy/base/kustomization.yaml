@@ -7,7 +7,6 @@ resources:
   - ./calibre-web.yaml
   - ./homepage.yaml
   - ./jellyfin.yaml
-  - ./jellyseerr.yaml
   - ./mealie.yaml
   - ./paperless-ngx.yaml
   - ./vaultwarden.yaml
