@@ -23,6 +23,8 @@ spec:
                 name: paperless-env
             - secretRef:
                 name: paperless-secret-env
+            - secretRef:
+                name: paperless-oidc
           env:
             - name: PAPERLESS_REDIS
               value: "redis://:paperless@paperless-valkey:6379"

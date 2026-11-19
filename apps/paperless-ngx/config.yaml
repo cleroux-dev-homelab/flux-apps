@@ -7,3 +7,9 @@ data:
   PAPERLESS_TIME_ZONE: "America/Toronto"
   PAPERLESS_OCR_LANGUAGE: "eng+fra" # english + french OCR
   PAPERLESS_URL: "https://paperless.${PRIVATE_DOMAIN}"
+  # Login through Authelia (provider settings in oidc-secret.yaml). Accounts are linked to
+  # their Authelia user, never created from a login. /accounts/login/?loggedout=1 still
+  # shows the password form for when Authelia is down.
+  PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect
+  PAPERLESS_REDIRECT_LOGIN_TO_SSO: "true"
+  PAPERLESS_SOCIALACCOUNT_ALLOW_SIGNUPS: "false"

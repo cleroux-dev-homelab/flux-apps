@@ -14,3 +14,4 @@ resources:
   - ./pvc.yaml
   - ./route.yaml
   - ./secrets.yaml
+  - ./oidc-secret.yaml
