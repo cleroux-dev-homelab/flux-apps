@@ -15,6 +15,11 @@ metadata:
 spec:
   imageRepositoryRef:
     name: jellyfin
+  filterTags:
+    # Since 12.0 releases are tagged major.minor (12.4); Flux only reads x.y.z versions
+    pattern: '^(?P<major>\d+)\.(?P<minor>\d+)$'
+    extract: "$major.$minor.0"
   policy:
     semver:
-      range: ">=10.10.0"
+      # New major versions need manual steps (plugins, migrations), so stay on 12.x
+      range: "12.x"
