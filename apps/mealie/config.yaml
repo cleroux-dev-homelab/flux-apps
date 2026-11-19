@@ -20,6 +20,8 @@ data:
   OIDC_PROVIDER_NAME: Authelia
   OIDC_USER_CLAIM: preferred_username
   OIDC_SIGNUP_ENABLED: "true"
+  # Admin rights follow LLDAP's lldap_admin group at every login
+  OIDC_ADMIN_GROUP: lldap_admin
   OIDC_AUTO_REDIRECT: "true"
   # The password form stays reachable at /login?direct=1 for when Authelia is down
   ALLOW_PASSWORD_LOGIN: "true"
