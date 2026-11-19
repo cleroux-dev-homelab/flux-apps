@@ -20,7 +20,7 @@ spec:
           - 100 # users
       containers:
         - name: jellyfin
-          image: ghcr.io/jellyfin/jellyfin:10.11.11
+          image: ghcr.io/jellyfin/jellyfin:12.4
           securityContext:
             privileged: true # Container must run as privileged inside of the pod, required for hardware acceleration
           env:
