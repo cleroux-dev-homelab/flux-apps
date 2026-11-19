@@ -4,6 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: paperless-data
 spec:
+  storageClassName: local-path
   accessModes: ["ReadWriteOnce"]
   resources:
     requests:
@@ -14,6 +15,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: paperless-export
 spec:
+  storageClassName: local-path
   accessModes: ["ReadWriteOnce"]
   resources:
     requests:
@@ -24,6 +26,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: paperless-consume
 spec:
+  storageClassName: local-path
   accessModes: ["ReadWriteOnce"]
   resources:
     requests:

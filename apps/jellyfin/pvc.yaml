@@ -4,6 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: jellyfin-config
 spec:
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
@@ -15,6 +16,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: jellyfin-cache
 spec:
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:

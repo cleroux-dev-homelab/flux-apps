@@ -4,6 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: calibre-config
 spec:
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
@@ -15,6 +16,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: calibre-books
 spec:
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:

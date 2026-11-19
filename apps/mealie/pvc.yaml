@@ -4,6 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mealie
 spec:
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:

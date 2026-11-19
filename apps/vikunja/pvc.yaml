@@ -4,6 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: vikunja
 spec:
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:

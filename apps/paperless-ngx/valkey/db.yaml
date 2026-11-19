@@ -4,6 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: paperless-valkey
 spec:
+  storageClassName: local-path
   accessModes: ["ReadWriteOnce"]
   resources:
     requests:

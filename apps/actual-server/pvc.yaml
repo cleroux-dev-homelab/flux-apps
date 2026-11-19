@@ -4,6 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: actual-server
 spec:
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
