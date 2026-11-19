@@ -6,6 +6,7 @@ namespace: mealie
 resources:
   - ./namespace.yaml
   - ./config.yaml
+  - ./oidc-secret.yaml
   - ./database.yaml
   - ./deployment.yaml
   - ./pvc.yaml

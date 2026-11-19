@@ -22,6 +22,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: mealie-config
+            - secretRef:
+                name: mealie-oidc
           env:
             - name: POSTGRES_USER
               valueFrom:

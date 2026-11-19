@@ -12,3 +12,14 @@ data:
   WEB_CONCURRENCY: "1"
   BASE_URL: https://mealie.${PRIVATE_DOMAIN}
   DB_ENGINE: postgres
+  # Login through Authelia (client secret in oidc-secret.yaml). Accounts match on the
+  # username; anyone Authelia lets in gets a new account in the Home group.
+  OIDC_AUTH_ENABLED: "true"
+  OIDC_CONFIGURATION_URL: https://auth.${PRIVATE_DOMAIN}/.well-known/openid-configuration
+  OIDC_CLIENT_ID: mealie
+  OIDC_PROVIDER_NAME: Authelia
+  OIDC_USER_CLAIM: preferred_username
+  OIDC_SIGNUP_ENABLED: "true"
+  OIDC_AUTO_REDIRECT: "true"
+  # The password form stays reachable at /login?direct=1 for when Authelia is down
+  ALLOW_PASSWORD_LOGIN: "true"
