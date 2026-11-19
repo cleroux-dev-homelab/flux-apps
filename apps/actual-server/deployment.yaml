@@ -19,6 +19,11 @@ spec:
           ports:
             - name: https
               containerPort: 5006
+          envFrom:
+            - configMapRef:
+                name: actual-config
+            - secretRef:
+                name: actual-oidc
           volumeMounts:
             - name: data
               mountPath: /data

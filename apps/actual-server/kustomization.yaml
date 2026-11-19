@@ -5,6 +5,8 @@ namespace: actual-server
 
 resources:
   - ./namespace.yaml
+  - ./config.yaml
+  - ./oidc-secret.yaml
   - ./deployment.yaml
   - ./pvc.yaml
   - ./service.yaml

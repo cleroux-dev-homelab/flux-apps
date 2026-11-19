@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: actual-config
+data:
+  # Login through Authelia (client secret in oidc-secret.yaml). The first login asks for the
+  # old server password and becomes the server owner.
+  ACTUAL_OPENID_DISCOVERY_URL: https://auth.${PRIVATE_DOMAIN}/.well-known/openid-configuration
+  ACTUAL_OPENID_CLIENT_ID: actual
+  ACTUAL_OPENID_SERVER_HOSTNAME: https://actual.${PRIVATE_DOMAIN}
+  # Only users the owner adds under Server settings > User Directory can log in
+  ACTUAL_USER_CREATION_MODE: manual
+  # The old server password stays on the login screen for when Authelia is down
+  ACTUAL_OPENID_ENFORCE: "false"
