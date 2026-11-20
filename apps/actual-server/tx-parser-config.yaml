@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tx-parser-config
+data:
+  # Only the budgets listed here are imported into
+  config.yaml: |
+    actual:
+      http_server: http://actual-http:5007
+      api_key_file: /run/secrets/tx-parser/api-key
+
+    timezone: ${TIMEZONE}
+
+    mail_accounts:
+      - name: migadu
+        host: imap.migadu.com:993
+        username: guillaume@cleroux.dev
+        password_file: /run/secrets/tx-parser/imap-password
+        emails:
+          imported: migadu/Trash
+          unrecognized: migadu/INBOX
+
+    budgets:
+      - name: Loup
+        accounts:
+          - name: BMO - MasterCard
+            mailbox: migadu/transactions-bmo
+            parser: bmo
+      - name: Shared Account
+        accounts:
+          - name: BNC MasterCard
+            mailbox: migadu/transactions-bnc
+            parser: bnc
+          - name: Costco MasterCard
+            mailbox: migadu/transactions-cibc
+            parser: cibc

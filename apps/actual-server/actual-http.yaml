@@ -1,0 +1,60 @@
+---
+# HTTP API in front of Actual, for tx-parser only. It logs in with Actual's server
+# password, as Actual's built-in admin, so it can reach every budget on the server.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actual-http
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: actual-http
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: actual-http
+    spec:
+      containers:
+        - name: actual-http
+          image: docker.io/jhonderson/actual-http-api:26.11.0 # {"$imagepolicy": "flux-system:actual-http"}
+          env:
+            - name: ACTUAL_SERVER_URL
+              value: http://actual-server:5006
+            - name: ACTUAL_SERVER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tx-parser
+                  key: actual-server-password
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: tx-parser
+                  key: api-key
+          ports:
+            - name: http
+              containerPort: 5007
+          readinessProbe:
+            tcpSocket:
+              port: http
+          volumeMounts:
+            # Budgets it downloads from Actual; fetched again after a restart
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: actual-http
+spec:
+  selector:
+    app.kubernetes.io/name: actual-http
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 5007
+      targetPort: http

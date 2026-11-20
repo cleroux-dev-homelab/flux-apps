@@ -6,6 +6,7 @@ namespace: flux-system
 resources:
   - ./image-automation.yaml
 
+  - ./actual-http.yaml
   - ./actual-server.yaml
   - ./audiobookshelf.yaml
   - ./calibre-web.yaml

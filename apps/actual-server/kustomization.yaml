@@ -11,3 +11,8 @@ resources:
   - ./pvc.yaml
   - ./service.yaml
   - ./route.yaml
+  # Imports bank emails into Actual
+  - ./tx-parser-config.yaml
+  - ./tx-parser-secret.yaml
+  - ./tx-parser.yaml
+  - ./actual-http.yaml
