@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,7 +14,7 @@ spec:
     spec:
       containers:
         - name: calibre-web
-          image: ghcr.io/linuxserver/calibre-web:0.6.27-ls410 # {"$imagepolicy": "flux-system:calibre-web"}
+          image: ghcr.io/linuxserver/calibre-web:0.6.27-ls411 # {"$imagepolicy": "flux-system:calibre-web"}
           envFrom:
             - configMapRef:
                 name: calibre-web-config
@@ -27,7 +26,6 @@ spec:
               mountPath: /config
             - name: books
               mountPath: /books
-
       volumes:
         - name: config
           persistentVolumeClaim:
