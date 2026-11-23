@@ -11,5 +11,3 @@ spec:
     initdb:
       database: paperless
       owner: paperless
-      secret:
-        name: paperless-db-app-user

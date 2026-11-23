@@ -1,7 +1,22 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: paperless-valkey-auth
+    name: paperless-valkey-auth
 type: Opaque
 stringData:
-  password: "paperless"
+    password: ENC[AES256_GCM,data:PkrflAQ0W/8C1VuTeq98letLovKTbKMSK2iDZxRlSgIav6Qxso/Ick3G/00XJrbHF9oX45fz4zruDcUQwOEXsg==,iv:BjPNsUeJg5S6w6WeVU0m4fYe0veh+zNpu7R+Pig3SJo=,tag:3MD3BZ9h+954LFxFckVO0Q==,type:str]
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCc0dmcFNPWnN1L0hScmVh
+            SzRjWWlWWHcwaVp3a1dManhlNWUvRjZKVkNzClBlZ1pFQ0MwMnRROXpYMVhUc1VN
+            K1pGOXg1Ymttd3BMRGtySzQyd2I1amsKLS0tIHAzaktuWXg0MUpBRU9idG5KSitm
+            QlFTYzMvMk9UcTZNcU9GVXBwQ1lQa28KXMh6HrVJK876zyuBiX/tSkQsCPIOB16n
+            756Z6tleElOQjowvR2WPWlSe3O4XoweWsXWQkt0Ux+K6aU53ejbhMw==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
+    encrypted_regex: ^(data|stringData)$
+    lastmodified: "2026-11-23T19:45:25Z"
+    mac: ENC[AES256_GCM,data:stAFmww5RjiD8LpABTMYKNstiBTqfZqKzUAmTNJyFFLaWzKV2Bra+hFFWd5USoDhLngzr1TsBU6PVT0avRU6GJUDvM99641N7qisbICh7TdmIASntaI5lFqCNL363yYqzpneNRTyaHooUdlJ57PWyOn8iVFeP7QS5Nbzg2vKxIY=,iv:6vgpexmpJq4wogKUf188jFDAlkk3W71B8MhNzUgaS9k=,tag:PsfrP0gj+cnFyei8MNXe3Q==,type:str]
+    version: 3.13.3

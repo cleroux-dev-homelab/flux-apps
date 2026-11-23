@@ -26,8 +26,13 @@ spec:
             - secretRef:
                 name: paperless-oidc
           env:
+            - name: VALKEY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-valkey-auth
+                  key: password
             - name: PAPERLESS_REDIS
-              value: "redis://:paperless@paperless-valkey:6379"
+              value: "redis://:$(VALKEY_PASSWORD)@paperless-valkey:6379"
 
             - name: PAPERLESS_DBHOST
               value: "paperless-pg-rw"
@@ -36,12 +41,12 @@ spec:
             - name: PAPERLESS_DBUSER
               valueFrom:
                 secretKeyRef:
-                  name: paperless-db-app-user
+                  name: paperless-pg-app
                   key: username
             - name: PAPERLESS_DBPASS
               valueFrom:
                 secretKeyRef:
-                  name: paperless-db-app-user
+                  name: paperless-pg-app
                   key: password
 
           volumeMounts:
