@@ -10,7 +10,6 @@ resources:
 
   - ./config.yaml
   - ./deployment.yaml
-  - ./media-pvc.yaml
   - ./pvc.yaml
   - ./route.yaml
   - ./secrets.yaml
